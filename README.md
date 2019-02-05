@@ -6,6 +6,7 @@
 - [文件相关](./linux/file.md)
 - [管道相关](./linux/grep.md)
 - [shell脚本](./linux/shell.md)
+- [运维](./linux/devops.md)
 
 ## MySQL
 
