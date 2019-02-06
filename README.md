@@ -11,7 +11,7 @@
 ## MySQL
 - 优化
 - 索引
-- 事务
+- [事务](./mysql/transaction.md)
 - [主从](./mysql/replication.md)
 - 分区
 - 引擎
