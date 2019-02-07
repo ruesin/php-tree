@@ -13,7 +13,7 @@
 - 索引
 - [事务](./mysql/transaction.md)
 - [主从](./mysql/replication.md)
-- 分区
+- [分区](./mysql/partition.md)
 - 引擎
 - 具体问题
 
