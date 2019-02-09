@@ -15,7 +15,7 @@
 - [主从](./mysql/replication.md)
 - [分区](./mysql/partition.md)
 - 引擎
-- 具体问题
+- [具体问题](./mysql/question.md)
 
 ## Redis
 - 数据类型
