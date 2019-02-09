@@ -10,7 +10,7 @@
 
 ## MySQL
 - 优化
-- 索引
+- [索引](./mysql/index.md)
 - [事务](./mysql/transaction.md)
 - [主从](./mysql/replication.md)
 - [分区](./mysql/partition.md)
@@ -51,7 +51,7 @@
 - 扩展
 
 ## Nginx
-- php-fpm
+- [php-fpm](./nginx/php.md)
 - lua
 - 负载均衡
 
