@@ -27,6 +27,7 @@
 - 缓存
 - restful
 - 跨域
+- jwt
 
 ## 框架
 - composer
