@@ -1,6 +1,6 @@
-# PHP面试问题大纲
+# PHP技能树
 
-简单整理了近几年面试时的问题大纲，只做参考使用，具体面试时还是按照项目来聊。
+简单整理了一些常用的技能需求，持续更新完善中。
 
 ## Linux
 - [文件相关](./linux/file.md)
@@ -27,7 +27,7 @@
 - 缓存
 - restful
 - 跨域
-- jwt
+- [jwt](./web/jwt.md)
 
 ## 框架
 - [composer](./framework/composer.md)
