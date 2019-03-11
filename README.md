@@ -14,7 +14,7 @@
 - [事务](./mysql/transaction.md)
 - [主从](./mysql/replication.md)
 - [分区](./mysql/partition.md)
-- 引擎
+- [引擎](./mysql/engine.md)
 - [具体问题](./mysql/question.md)
 
 ## Redis
@@ -33,6 +33,7 @@
 - [composer](./framework/composer.md)
 - [autoload](./framework/autoload.md)
 - route
+- 依赖注入
 - 中间件
 - 服务容器
 - RBAC
