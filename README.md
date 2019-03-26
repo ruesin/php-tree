@@ -32,7 +32,7 @@
 ## 框架
 - [composer](./framework/composer.md)
 - [autoload](./framework/autoload.md)
-- route
+- [路由](./framework/route.md)
 - 依赖注入
 - 中间件
 - 服务容器
