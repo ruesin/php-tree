@@ -35,7 +35,7 @@
 - [路由](./framework/route.md)
 - 依赖注入
 - 中间件
-- 服务容器
+- [容器](./framework/container.md)
 - RBAC
 
 ## 基础
