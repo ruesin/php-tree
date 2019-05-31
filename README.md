@@ -9,7 +9,6 @@
 - [运维](./linux/devops.md)
 
 ## MySQL
-- 优化
 - [索引](./mysql/index.md)
 - [事务](./mysql/transaction.md)
 - [主从](./mysql/replication.md)
