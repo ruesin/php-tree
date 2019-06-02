@@ -162,12 +162,13 @@ InnoDB的辅助索引data域存储相应记录主键的值而不是地址。换�
 - 索引字段不能进行计算、使用函数、正则表达式，任何加工都会使索引无效，如：+, abs(), !=
 - 索引字段类型必须和传入字段类型一致，避免一切隐式类型转换，如定义为字符串，传入的是整型，无法使用索引。
 > 假设给字符串类型字段`user_name`加了索引，当执行时：`user_name = 100;`等价于`convert(user_name, signed) = 100;`，即搜索把`user_name`字段转化为整型后的值等于100的行。而这样的user_name是可以有很多的，例如”100”，”0100”和”00100”。所以不能使用索引进行查找！在MySQL底层会判断，字段类型为string时，而查询条件传入的非string，不使用索引
-- %like无法使用索引
+- %like无法使用索引，where c1 like 'a%'等价于 where c1>='a' and c1<'b’
 - 联合索引无最左字段
 - 索引无法存储null值
 - 区分度太低，或查询数量超过表的一部分，mysql是30%
 - 条件中有OR，而OR的字段没有索引
 - 优化器选选择
+- 排序键顺序与索引中列顺序不一致；升降序不一致；查询条件是范围查询；排序字段在多个索引中，无法使用索引排序。Where条件中的前导列为常量时，Order by可以不满足索引的最左前缀
 
 ## Where
 
@@ -186,11 +187,15 @@ InnoDB的辅助索引data域存储相应记录主键的值而不是地址。换�
 
 提取规则：从索引的第一个键值开始，检查其在where条件中是否存在，若存在并且条件是=、>=，则将对应的条件加入Index First Key之中，继续读取索引的下一个键值，使用同样的提取规则；若存在并且条件是>，则将对应的条件加入Index First Key中，同时终止Index First Key的提取；若不存在，同样终止Index First Key的提取。
 
+![Index First Key](../images/mysql/index-first-key.png)
+
 #### Index Last Key
 
 用于确定索引查询的终止范围，对于起始范围之后读到的每一条索引记录，均需要判断是否已经超过了Index Last Key的范围，若超过，则当前查询结束。
 
 提取规则：从索引的第一个键值开始，检查其在where条件中是否存在，若存在并且条件是=、<=，则将对应条件加入到Index Last Key中，继续提取索引的下一个键值，使用同样的提取规则；若存在并且条件是 < ，则将条件加入到Index Last Key中，同时终止提取；若不存在，同样终止Index Last Key的提取。
+
+![Index Last Key](../images/mysql/index-last-key.png)
 
 ### Index Filter
 
@@ -199,6 +204,8 @@ InnoDB的辅助索引data域存储相应记录主键的值而不是地址。换�
 用于过滤索引查询范围中不满足查询条件的记录，对于索引范围中的每一条记录，均需要与Index Filter进行对比，若不满足Index Filter则直接丢弃，继续读取索引下一条记录。
 
 Index Filter的提取规则：同样从索引列的第一列开始，检查其在where条件中是否存在：若存在并且where条件仅为 =，则跳过第一列继续检查索引下一列，下一索引列采取与索引第一列同样的提取规则；若where条件为 >=、>、<、<= 其中的几种，则跳过索引第一列，将其余where条件中索引相关列全部加入到Index Filter之中；若索引第一列的where条件包含 =、>=、>、<、<= 之外的条件，则将此条件以及其余where条件中索引相关列全部加入到Index Filter之中；若第一列不包含查询条件，则将所有索引相关条件均加入到Index Filter之中。
+
+![Index Filter](../images/mysql/index-filter.png)
 
 ### Table Filter
 
