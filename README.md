@@ -51,6 +51,7 @@
 - [生命周期](./php/life-cycle.md)
 - 版本
 - 扩展
+- [生成器](./php/generator.md)
 
 ## Nginx
 - [php-fpm](./nginx/php.md)
