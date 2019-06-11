@@ -27,6 +27,7 @@
 - [RESTful](./web/rest.md)
 - [跨域](./web/cors.md)
 - [jwt](./web/jwt.md)
+- 生命周期
 
 ## 框架
 - [composer](./framework/composer.md)
@@ -47,8 +48,8 @@
 - 500
 
 ## PHP
-- 生命周期
-- 7
+- [生命周期](./php/life-cycle.md)
+- 版本
 - 扩展
 
 ## Nginx
@@ -71,4 +72,3 @@
 - 无限极分类
 - rpc
 - 性能分析
-- 某一时间、时针分针夹角计算
