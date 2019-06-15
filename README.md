@@ -39,7 +39,6 @@
 - RBAC
 
 ## 基础
-- require、include
 - session、cookie
 - 数组
 - 字符串
@@ -52,6 +51,7 @@
 - 版本
 - 扩展
 - [生成器](./php/generator.md)
+- [require/include](./php/include.md)
 
 ## Nginx
 - [php-fpm](./nginx/php.md)
