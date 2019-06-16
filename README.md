@@ -52,7 +52,8 @@
 - 扩展
 - [生成器](./php/generator.md)
 - [require/include](./php/include.md)
-
+- [魔术方法](./php/magic.md)
+ 
 ## Nginx
 - [php-fpm](./nginx/php.md)
 - lua
