@@ -52,6 +52,10 @@
 - [require/include](./php/include.md)
 - [传值/传引用](./php/pass-value.md)
 - [魔术方法](./php/magic.md)
+- [反射](./php/reflection.md)
+- 数组对象
+- 迭代器
+- 变量
  
 ## Nginx
 - [php-fpm](./nginx/php.md)
