@@ -42,7 +42,6 @@
 - session、cookie
 - 数组
 - 字符串
-- 传值
 - SPL
 - 500
 
@@ -52,6 +51,7 @@
 - 扩展
 - [生成器](./php/generator.md)
 - [require/include](./php/include.md)
+- [传值/传引用](./php/pass-value.md)
 - [魔术方法](./php/magic.md)
  
 ## Nginx
