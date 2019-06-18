@@ -46,6 +46,7 @@
 
 ## PHP
 - [生命周期](./php/life-cycle.md)
+- [变量](./php/variable.md)
 - 版本
 - 扩展
 - [生成器](./php/generator.md)
@@ -55,7 +56,7 @@
 - [反射](./php/reflection.md)
 - 数组对象
 - 迭代器
-- 变量
+
  
 ## Nginx
 - [php-fpm](./nginx/php.md)
