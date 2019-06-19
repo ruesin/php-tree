@@ -54,7 +54,7 @@
 - [传值/传引用](./php/pass-value.md)
 - [魔术方法](./php/magic.md)
 - [反射](./php/reflection.md)
-- 数组对象
+- [数组对象](./php/array-object.md)
 - 迭代器
  
 ## Nginx
