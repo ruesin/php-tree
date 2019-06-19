@@ -95,3 +95,16 @@ ArrayIterator implements ArrayAccess , SeekableIterator , Countable , Serializab
     public valid ( void ) : bool  //检查数组是否还包含其他元素
 }
 ```
+
+SeekableIterator：Seekable迭代器。
+
+```php
+SeekableIterator extends Iterator {
+    abstract public seek ( int $position ) : void
+    abstract public Iterator::current ( void ) : mixed
+    abstract public Iterator::key ( void ) : scalar
+    abstract public Iterator::next ( void ) : void
+    abstract public Iterator::rewind ( void ) : void
+    abstract public Iterator::valid ( void ) : bool
+}
+```
