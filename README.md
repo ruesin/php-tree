@@ -39,7 +39,6 @@
 - RBAC
 
 ## 基础
-- 数组
 - 字符串
 - SPL
 - 500
@@ -47,6 +46,7 @@
 ## PHP
 - [生命周期](./php/life-cycle.md)
 - [变量](./php/variable.md)
+- [数组](./php/array.md)
 - 版本
 - 扩展
 - [生成器](./php/generator.md)
