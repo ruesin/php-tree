@@ -607,6 +607,78 @@ class Blue extends Color
 (new Red(new Square()))->Draw();
 ```
 
+### 装饰模式(Decorator Pattern)
+装饰模式(Decorator Pattern)：动态地给一个对象增加一些额外的职责(Responsibility)，就增加对象功能来说，装饰模式比生成子类实现更为灵活。其别名也可以称为包装器(Wrapper)，与适配器模式的别名相同，但它们适用于不同的场合。根据翻译的不同，装饰模式也有人称之为“油漆工模式”。
+
+一般有两种方式可以实现给一个类或对象增加行为：
+- 继承机制，使用继承机制是给现有类添加功能的一种有效途径，通过继承一个现有类可以使得子类在拥有自身方法的同时还拥有父类的方法。但是这种方法是静态的，用户不能控制增加行为的方式和时机。
+- 关联机制，即将一个类的对象嵌入另一个对象中，由另一个对象来决定是否调用嵌入对象的行为以便扩展自己的行为，我们称这个嵌入的对象为装饰器(Decorator)
+
+装饰模式以对客户透明的方式动态地给一个对象附加上更多的责任，换言之，客户端并不会觉得对象在装饰前和装饰后有什么不同。装饰模式可以在不需要创造更多子类的情况下，将对象的功能加以扩展。
+
+装饰模式包含如下角色：
+- Component: 抽象构件，装饰类和具体构件的公共父类，定义一个抽象接口以规范准备接收附加责任的对象。
+- ConcreteComponent: 实现抽象构件，通过装饰角色为其添加一些职责。
+- Decorator: 抽象装饰类，继承抽象构件，并包含具体构件的实例，可以通过其子类扩展具体构件的功能。
+- ConcreteDecorator: 具体装饰类，实现抽象装饰的相关方法，并给具体构件对象添加附加的责任。
+
+```php
+//抽象构件
+interface Component
+{
+    public function say();
+}
+
+//具体构件
+class ConcreteComponent implements Component
+{
+    public function say()
+    {
+        echo '我是具体构件' . PHP_EOL;
+    }
+}
+
+//抽象装饰
+class Decorator implements Component
+{
+    /**
+     * @var Component
+     */
+    protected $component = null;
+
+    public function __construct(Component $component)
+    {
+        $this->component = $component;
+    }
+
+    public function say()
+    {
+        $this->component->say();
+    }
+}
+
+//具体装饰者
+class ConcreteDecorator extends Decorator
+{
+    public function say()
+    {
+        parent::say();
+        $this->addedFunction();
+    }
+
+    private function addedFunction()
+    {
+        echo "我做了点装饰" . PHP_EOL;
+    }
+}
+
+$component = new ConcreteComponent();
+$component->say();
+
+$decorator = new ConcreteDecorator($component);
+$decorator->say();
+```
+
 参考：
 - https://github.com/me115/design_patterns
 - https://www.zhihu.com/question/20367734
