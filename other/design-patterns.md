@@ -527,6 +527,86 @@ class Client
 }
 ```
 
+### 桥接模式(Bridge Pattern)
+桥接模式(Bridge Pattern)：将抽象部分与它的实现部分分离，使它们都可以独立地变化。它是一种对象结构型模式，又称为柄体(Handle and Body)模式或接口(Interface)模式。
+
+假设要绘制矩形、圆形、椭圆、正方形，我们至少需要4个形状类。如果绘制的图形要具有不同的颜色，如红色、绿色、蓝色等，此时至少有如下两种设计方案：
+- 第一种设计方案是为每一种形状都提供一套各种颜色的版本。
+- 第二种设计方案是根据实际需要对形状和颜色进行组合
+
+对于有两个变化维度（即两个变化的原因）的系统，采用方案二来进行设计系统中类的个数更少，且系统扩展更为方便。设计方案二即是桥接模式的应用。
+
+桥接模式主要应对的是由于实际的需要，某个类具有两个或者两个以上的维度变化（违反了SRP原则），如果只是用继承将无法实现这种需要，或者使得设计变得相当臃肿。
+
+桥接模式将继承关系转换为关联关系，从而降低了类与类之间的耦合，减少了代码编写量。
+
+桥接模式包含如下角色：
+- Abstraction：定义抽象接口，拥有一个Implementor类型的对象引用
+- RefinedAbstraction：扩展Abstraction中的接口定义
+- Implementor：具体实现的接口，Implementor和RefinedAbstraction接口并不一定完全一致，实际上这两个接口可以完全不一样Implementor提供具体操作方法，而Abstraction提供更高层次的调用
+- ConcreteImplementor：具体实现类，实现Implementor接口
+
+```php
+// 形状接口 Implementor
+interface Shape
+{
+    public function Draw();
+}
+
+// 具体形状 ConcreteImplementor
+class Circular implements Shape
+{
+    public function Draw()
+    {
+        echo '圆形';
+    }
+}
+class Square implements Shape
+{
+    public function Draw()
+    {
+        echo '正方形';
+    }
+}
+
+// 颜色的抽象接口 Abstraction
+abstract class Color
+{
+    /**
+     * @var Shape
+     */
+    protected $shape;
+
+    public function __construct(Shape $shape)
+    {
+        $this->shape = new $shape;
+    }
+
+    abstract public function Draw();
+}
+
+//具体的颜色 RefinedAbstraction
+class Red extends Color
+{
+    public function Draw()
+    {
+        echo '红色的';
+        $this->shape->Draw();
+    }
+}
+class Blue extends Color
+{
+    public function Draw()
+    {
+        echo '蓝色的';
+        $this->shape->Draw();
+    }
+}
+
+(new Blue(new Circular()))->Draw();echo PHP_EOL;
+(new Red(new Square()))->Draw();
+```
+
 参考：
 - https://github.com/me115/design_patterns
 - https://www.zhihu.com/question/20367734
