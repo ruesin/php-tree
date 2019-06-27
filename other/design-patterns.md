@@ -678,6 +678,63 @@ $component->say();
 $decorator = new ConcreteDecorator($component);
 $decorator->say();
 ```
+### 外观模式(Facade Pattern)
+外观模式(Facade Pattern)：外部与一个子系统的通信必须通过一个统一的外观对象进行，为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。外观模式又称为门面模式，它是一种对象结构型模式。
+
+外观模式包含如下角色：
+- Facade: 外观角色
+- SubSystem:子系统角色
+```php
+//Facade
+class Facade
+{
+    private $subSystemA = null;
+    private $subSystemB = null;
+    private $subSystemC = null;
+
+    public function __construct()
+    {
+        $this->subSystemA = new SubSystemA();
+        $this->subSystemB = new SubSystemB();
+        $this->subSystemC = new SubSystemC();
+    }
+
+    public function operation()
+    {
+        $this->subSystemA->operation();
+        $this->subSystemB->operation();
+        $this->subSystemC->operation();
+    }
+}
+
+//SubSystem
+class SubSystemA
+{
+    public function operation()
+    {
+        echo "SubSystemA" . PHP_EOL;
+    }
+}
+
+class SubSystemB
+{
+    public function operation()
+    {
+        echo "SubSystemB" . PHP_EOL;
+    }
+}
+
+class SubSystemC
+{
+    public function operation()
+    {
+        echo "SubSystemC" . PHP_EOL;
+    }
+}
+
+(new Facade())->operation();
+```
+
 
 参考：
 - https://github.com/me115/design_patterns
