@@ -735,6 +735,81 @@ class SubSystemC
 (new Facade())->operation();
 ```
 
+### 享元模式
+享元模式(Flyweight Pattern)：运用共享技术有效地支持大量细粒度对象的复用。系统只使用少量的对象，而这些对象都很相似，状态变化很小，可以实现对象的多次复用。由于享元模式要求能够共享的对象必须是细粒度对象，因此它又称为轻量级模式，享元模式结构较为复杂，一般结合工厂模式一起使用。
+
+享元模式通过共享技术实现相同或相似对象的重用。
+
+在享元模式中可以共享的相同内容称为内部状态(IntrinsicState)，而那些需要外部环境来设置的不能共享的内容称为外部状态(Extrinsic State)，由于区分了内部状态和外部状态，因此可以通过设置不同的外部状态使得相同的对象可以具有一些不同的特征，而相同的内部状态是可以共享的。
+
+在享元模式中通常会出现工厂模式，需要创建一个享元工厂来负责维护一个享元池(Flyweight Pool)用于存储具有相同内部状态的享元对象。
+
+在享元模式中共享的是享元对象的内部状态，外部状态需要通过环境来设置。在实际使用中，能够共享的内部状态是有限的，因此享元对象一般都设计为较小的对象，它所包含的内部状态较少，这种对象也称为细粒度对象。享元模式的目的就是使用共享技术来实现大量细粒度对象的复用。
+
+享元模式包含如下角色：
+- Flyweight: 抽象享元类，通常是一个接口或抽象类，在抽象享元类中声明了具体享元类公共的方法，这些方法可以向外界提供享元对象的内部数据（内部状态），同时也可以通过这些方法来设置外部数据（外部状态）。
+- ConcreteFlyweight: 具体享元类，实现了抽象享元类，其实例称为享元对象；在具体享元类中为内部状态提供了存储空间。通常我们可以结合单例模式来设计具体享元类，为每一个具体享元类提供唯一的享元对象。
+- UnsharedConcreteFlyweight: 非共享具体享元类，并不是所有的抽象享元类的子类都需要被共享，不能被共享的子类可设计为非共享具体享元类；当需要一个非共享具体享元类的对象时可以直接通过实例化创建。
+- FlyweightFactory: 享元工厂类，享元工厂类用于创建并管理享元对象，它针对抽象享元类编程，将各种类型的具体享元对象存储在一个享元池中，享元池一般设计为一个存储“键值对”的集合（也可以是其他类型的集合），可以结合工厂模式进行设计；当用户请求一个具体享元对象时，享元工厂提供一个存储在享元池中已创建的实例或者创建一个新的实例（如果不存在的话），返回新创建的实例并将其存储在享元池中。
+
+```php
+// Flyweight: 抽象享元类
+interface Flyweight
+{
+    public function operation($name);
+
+    public function getType();
+}
+// ConcreteFlyweight: 具体享元类
+class ConcreteFlyweight implements Flyweight
+{
+    private $type;
+
+    public function __construct($type)
+    {
+        $this->type = $type;
+    }
+
+    public function operation($name)
+    {
+        echo "[类型(内在状态)] - [{$this->type}] - [名字(外在状态)] - [{$name}]".PHP_EOL;
+    }
+
+    public function getType()
+    {
+        return $this->type;
+    }
+}
+//FlyweightFactory: 享元工厂类
+class FlyweightFactory
+{
+    private static $instances = [];
+
+    /**
+     * @param $type
+     * @return ConcreteFlyweight
+     */
+    public static function getShape($type)
+    {
+        if (!isset(self::$instances[$type]) || is_null(self::$instances[$type])) {
+            self::$instances[$type] = new ConcreteFlyweight($type);
+        }
+
+        return self::$instances[$type];
+    }
+
+    public static function total()
+    {
+        return count(self::$instances);
+    }
+}
+
+$fw1 = FlyweightFactory::getShape('Iphone');
+$fw2 = FlyweightFactory::getShape('HuaWei');
+$fw1->operation('7');
+$fw2->operation("P30");
+```
+
 
 参考：
 - https://github.com/me115/design_patterns
