@@ -735,7 +735,7 @@ class SubSystemC
 (new Facade())->operation();
 ```
 
-### 享元模式
+### 享元模式(Flyweight Pattern)
 享元模式(Flyweight Pattern)：运用共享技术有效地支持大量细粒度对象的复用。系统只使用少量的对象，而这些对象都很相似，状态变化很小，可以实现对象的多次复用。由于享元模式要求能够共享的对象必须是细粒度对象，因此它又称为轻量级模式，享元模式结构较为复杂，一般结合工厂模式一起使用。
 
 享元模式通过共享技术实现相同或相似对象的重用。
@@ -810,6 +810,51 @@ $fw1->operation('7');
 $fw2->operation("P30");
 ```
 
+### 代理模式(Proxy Pattern)
+代理模式(Proxy Pattern)：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。代理模式的英 文叫做Proxy或Surrogate，它是一种对象结构型模式。
+
+在某些情况下，一个客户不想或者不能直接引用一个对象，此时可以通过一个称之为“代理”的第三者来实现间接引用。代理对象可以在客户端和目标对象之间起到中介的作用，并且可以通过代理对象去掉客户不能看到的内容和服务或者添加客户需要的额外服务。
+
+通过引入一个新的对象（如小图片和远程代理对象）来实现对真实对象的操作或者将新的对象作为真实对象的一个替身，这种实现机制即为代理模式，通过引入代理对象来间接访问一 个对象，这就是代理模式的模式动机。
+
+代理模式包含如下角色：
+- Subject: 抽象主题角色
+- Proxy: 代理主题角色
+- RealSubject: 真实主题角色
+```php
+interface Subject
+{
+    public function operation();
+}
+
+class RealSubject implements Subject
+{
+    public function operation()
+    {
+        echo '我是真的执行了'.PHP_EOL;
+    }
+}
+
+class Proxy implements Subject
+{
+    private $subject;
+
+    public function __construct(Subject $subject)
+    {
+        $this->subject = $subject;
+    }
+
+    public function operation()
+    {
+        echo '经过代理增强后 ';
+        $this->subject->operation();
+    }
+}
+
+$subject = new RealSubject();
+$proxy = new Proxy($subject);
+$proxy->operation();
+```
 
 参考：
 - https://github.com/me115/design_patterns
