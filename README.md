@@ -38,25 +38,23 @@
 - [中间件](./framework/middleware.md)
 - RBAC
 
-## 基础
-- 字符串
-- SPL
-- 500
-
 ## PHP
 - [生命周期](./php/life-cycle.md)
 - [变量](./php/variable.md)
 - [数组](./php/array.md)
+- [require/include](./php/include.md)
+- [传值/传引用](./php/pass-value.md)
 - [版本](./php/version.md)
 - 扩展
 - [生成器](./php/generator.md)
-- [require/include](./php/include.md)
-- [传值/传引用](./php/pass-value.md)
 - [魔术方法](./php/magic.md)
 - [反射](./php/reflection.md)
 - [数组对象](./php/array-object.md)
 - 迭代器
 - 预定义接口
+- 字符串
+- SPL
+- 500
  
 ## Nginx
 - [php-fpm](./nginx/php.md)
@@ -65,6 +63,7 @@
 - 代理
 
 ## Swoole
+- Server
 - 项目
 - [协程](./swoole/coroutine.md)
 
@@ -74,7 +73,8 @@
 - k8s
 
 ## 其他
-- 设计模式
-- 无限极分类
+- [设计模式](./other/design-patterns.md)
 - rpc
 - 性能分析
+- 排序算法
+- 查找算法

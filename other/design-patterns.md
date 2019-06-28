@@ -856,6 +856,388 @@ $proxy = new Proxy($subject);
 $proxy->operation();
 ```
 
+## 行为型模式
+行为型模式(Behavioral Pattern)是对在不同的对象之间划分责任和算法的抽象化。
+
+行为型模式不仅仅关注类和对象的结构，而且重点关注它们之间的相互作用。
+
+通过行为型模式，可以更加清晰地划分类与对象的职责，并研究系统在运行时实例对象 之间的交互。在系统运行时，对象并不是孤立的，它们可以通过相互通信与协作完成某些复杂功能，一个对象在运行时也将影响到其他对象的运行。
+
+行为型模式分为类行为型模式和对象行为型模式两种：
+
+- 类行为型模式：类的行为型模式使用继承关系在几个类之间分配行为，类行为型模式主要通过多态等方式来分配父类与子类的职责。
+- 对象行为型模式：对象的行为型模式则使用对象的聚合关联关系来分配行为，对象行为型模式主要是通过对象关联等方式来分配两个或多个类的职责。根据“合成复用原则”，系统中要尽量使用关联关系来取代继承关系，因此大部分行为型设计模式都属于对象行为型设计模式。
+
+### 命令模式
+命令模式(Command Pattern)：将一个请求封装为一个对象，从而使我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。
+
+在软件设计中，我们经常需要向某些对象发送请求，但是并不知道请求的接收者是谁，也不知道被请求的操作是哪个，我们只需在程序运行时指定具体的请求接收者即可，此时，可以使用命令模式来进行设计，使得请求发送者与请求接收者消除彼此之间的耦合，让对象之间的调用关系更加灵活。
+
+命令模式可以对发送者和接收者完全解耦，发送者与接收者之间没有直接引用关系，发送请求的对象只需要知道如何发送请求，而不必知道如何完成请求。
+
+所谓对命令的封装，说白了，无非就是把一系列的操作写到一个方法中，然后供客户端调用就行了。
+
+命令模式作为一种行为类模式，首先要做到低耦合，耦合度低了才能提高灵活性，而加入调用者和接收者两个角色的目的也正是为此。
+
+命令模式包含如下角色：
+- Command: 抽象命令类，类中对需要执行的命令进行声明，一般来说要对外公布一个execute方法用来执行命令
+- ConcreteCommand: 具体命令类
+- Invoker: 调用者，负责调用命令。
+- Receiver: 接收者，负责接收命令并且执行命令。
+- Client:客户类
+
+```php
+<?php
+//命令
+interface Command
+{
+    public function execute();
+}
+
+class ConcreteCommand implements Command
+{
+    private $receiver;
+
+    public function __construct(Receiver $receiver)
+    {
+        $this->receiver = $receiver;
+    }
+
+    public function execute()
+    {
+        $this->receiver->doSomething();
+    }
+}
+
+//调用者
+class Invoker
+{
+    /**
+     * @var Command
+     */
+    private $command;
+
+    public function setCommand(Command $command)
+    {
+        $this->command = $command;
+    }
+
+    public function action()
+    {
+        $this->command->execute();
+    }
+}
+
+
+//接受者
+class Receiver
+{
+    public function doSomething()
+    {
+        echo '接受者 do something';
+    }
+}
+
+$receiver = new Receiver();
+$command = new ConcreteCommand($receiver);
+$command->execute();
+
+$invoker = new Invoker();
+$invoker->setCommand($command);
+$invoker->action();
+```
+
+### 中介者模式
+中介者模式(Mediator Pattern)定义：用一个中介对象来封装一系列的对象交互，中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。中介者模式又称为调停者模式，它是一种对象行为型模式。
+
+一般来说，同事类之间的关系是比较复杂的，多个同事类之间互相关联时，他们之间的关系会呈现为复杂的网状结构，这是一种过度耦合的架构，即不利于类的复用，也不稳定。
+
+如果引入中介者模式，那么同事类之间的关系将变为星型结构，任何一个类的变动，只会影响的类本身，以及中介者，这样就减小了系统的耦合。一个好的设计，必定不会把所有的对象关系处理逻辑封装在本类中，而是使用一个专门的类来管理那些不属于自己的行为。
+
+中介者模式包含如下角色：
+- Mediator: 抽象中介者
+- ConcreteMediator: 具体中介者
+- Colleague: 抽象同事类
+- ConcreteColleague: 具体同事类
+
+有两个类A和B，类中各有一个数字，并且要保证类B中的数字永远是类A中数字的100倍。也就是说，当修改类A的数时，将这个数字乘以100赋给类B，而修改类B时，要将数除以100赋给类A。类A类B互相影响，就称为同事类。
+```php
+<?php
+
+abstract class AbstractMediator
+{
+    protected $colleagueA;
+    protected $colleagueB;
+
+    public function __construct(AbstractColleague $a, AbstractColleague $b)
+    {
+        $this->colleagueA = $a;
+        $this->colleagueB = $b;
+    }
+
+    abstract public function AaffectB();
+
+    abstract public function BaffectA();
+}
+
+class Mediator extends AbstractMediator
+{
+    public function AaffectB()
+    {
+        $number = $this->colleagueA->getNumber();
+        $this->colleagueB->changeNumber($number * 100);
+    }
+
+    public function BaffectA()
+    {
+        $number = $this->colleagueB->getNumber();
+        $this->colleagueA->changeNumber($number / 100);
+    }
+}
+
+abstract class AbstractColleague
+{
+    protected $number;
+
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    public function changeNumber($number)
+    {
+        $this->number = $number;
+    }
+
+    abstract public function setNumber($number, AbstractMediator $mediator);
+}
+
+class ColleagueA extends AbstractColleague
+{
+    public function setNumber($number, AbstractMediator $mediator)
+    {
+        $this->number = $number;
+        $mediator->AaffectB();
+    }
+}
+
+class ColleagueB extends AbstractColleague
+{
+    public function setNumber($number, AbstractMediator $mediator)
+    {
+        $this->number = $number;
+        $mediator->BaffectA();
+    }
+}
+
+$a = new ColleagueA();
+$b = new ColleagueB();
+$m = new Mediator($a, $b);
+$a->setNumber(35, $m);
+echo $b->getNumber();
+
+```
+
+### 观察者模式
+观察者模式(Observer Pattern)：定义对象间的一种一对多依赖关系，使得每当一个对象状态发生改变时，其相关依赖对象皆得到通知并被自动更新。观察者模式又叫做发布-订阅（Publish/Subscribe）模式、模型-视图（Model/View）模式、源-监听器（Source/Listener）模式或从属者（Dependents）模式。
+
+建立一种对象与对象之间的依赖关系，一个对象发生改变时将自动通知其他对象，其他对象将相应做出反应。在此，发生改变的对象称为观察目标，而被通知的对象称为观察者，一个观察目标可以对应多个观察者，而且这些观察者之间没有相互联系，可以根据需要增加和删除观察者，使得系统更易于扩展，这就是观察者模式的模式动机。
+
+观察者模式包含如下角色：
+- Subject: 目标，抽象主题角色把所有观察者对象保存在一个集合里，每个主题都可以有任意数量的观察者，抽象主题提供一个接口，可以增加和删除观察者对象。
+- ConcreteSubject: 具体目标，该角色将有关状态存入具体观察者对象，在具体主题的内部状态发生改变时，给所有注册过的观察者发送通知。
+- Observer: 观察者，是观察者者的抽象类，它定义了一个更新接口，使得在得到主题更改通知时更新自己。
+- ConcreteObserver: 具体观察者
+```php
+//观察者 Observer
+interface Observer
+{
+    public function update($message);
+}
+
+class ConcreteObserverA implements Observer
+{
+    public function update($message)
+    {
+        echo '观察者A收到消息' . $message;
+    }
+}
+
+class ConcreteObserverB implements Observer
+{
+    public function update($message)
+    {
+        echo '观察者B收到消息' . $message;
+    }
+}
+
+//被观察者 Subject
+interface Subject
+{
+    //增加订阅者
+    public function attach(Observer $observer);
+
+    //删除订阅者
+    public function detach(Observer $observer);
+
+    //通知订阅者更新消息
+    public function notify($message);
+}
+
+class SubscriptionSubject implements Subject
+{
+    //观察者
+    private $observers = [];
+
+    public function attach(Observer $observer)
+    {
+        $this->observers[get_class($observer)] = $observer;
+    }
+
+    public function detach(Observer $observer)
+    {
+        unset($this->observers[get_class($observer)]);
+    }
+
+    public function notify($message)
+    {
+        foreach ($this->observers as $observer) {
+            $observer->update($message);
+        }
+    }
+}
+
+$a = new ConcreteObserverA();
+$b = new ConcreteObserverB();
+$s = new SubscriptionSubject();
+$s->attach($a);
+$s->attach($b);
+$s->notify('你好啊');
+```
+
+
+
+###状态模式
+状态模式(State Pattern) ：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。其别名为状态对象(Objects for States)，状态模式是一种对象行为型模式。
+
+在很多情况下，一个对象的行为取决于一个或多个动态变化的属性，这样的属性叫做状态，这样的对象叫做有状态的(stateful)对象，这样的对象状态是从事先定义好的一系列值中取出的。当一个这样的对象与外部事件产生互动时，其内部状态就会改变，从而使得系统的行为也随之发生变化。
+
+状态模式包含如下角色：
+- Context: 环境类，又称为上下文类，它是拥有多种状态的对象。由于环境类的状态存在多样性且在不同状态下对象的行为有所不同，因此将状态独立出去形成单独的状态类。在环境类中维护一个抽象状态类State的实例，这个实例定义当前状态，在具体实现时，它是一个State子类的对象。
+- State: 抽象状态类，用于定义一个接口以封装与环境类的一个特定状态相关的行为，在抽象状态类中声明了各种不同状态对应的方法，而在其子类中实现类这些方法，由于不同状态下对象的行为可能不同，因此在不同子类中方法的实现可能存在不同，相同的方法可以写在抽象状态类中。
+- ConcreteState: 具体状态类，它是抽象状态类的子类，每一个子类实现一个与环境类的一个状态相关的行为，每一个具体状态类对应环境的一个具体状态，不同的具体状态类其行为有所不同。
+
+```php
+//State（抽象状态类）
+interface State
+{
+    public function handleState();
+}
+
+//ConcreteState（具体状态类）
+class ConcreteStateA implements State
+{
+    public function handleState()
+    {
+        echo "State: A";
+    }
+}
+
+class ConcreteStateB implements State
+{
+    public function handleState()
+    {
+        echo "State: B";
+    }
+}
+
+//Context（环境类）
+class Context
+{
+    /**
+     * @var State
+     */
+    private $state;
+
+    public function setState(State $state)
+    {
+        $this->state = $state;
+    }
+
+    public function operation()
+    {
+        $this->state->handleState();
+    }
+}
+
+$context = new Context();
+$context->setState(new ConcreteStateA());
+$context->operation();
+
+$context->setState(new ConcreteStateB());
+$context->operation();
+```
+
+###策略模式
+策略模式(Strategy Pattern)：定义一系列算法，将每一个算法封装起来，并让它们可以相互替换。策略模式让算法独立于使用它的客户而变化，也称为政策模式(Policy)。
+
+完成一项任务，往往可以有多种不同的方式，每一种方式称为一个策略，我们可以根据环境或者条件的不同选择不同的策略来完成该项任务。
+
+在软件开发中也常常遇到类似的情况，实现某一个功能有多个途径，此时可以使用一种设计模式来使得系统可以灵活地选择解决途径，也能够方便地增加新的解决途径。
+
+在软件系统中，有许多算法可以实现某一功能，如查找、排序等，一种常用的方法是硬编码(Hard Coding)在一个类中，如需要提供多种查找算法，可以将这些算法写到一个类中，在该类中提供多个方法，每一个方法对应一个具体的查找算法；当然也可以将这些查找算法封装在一个统一的方法中，通过if…else…等条件判断语句来进行选择。这两种实现方法我们都可以称之为硬编码，如果需要增加一种新的查找算法，需要修改封装算法类的源代码；更换查找算法，也需要修改客户端调用代码。在这个算法类中封装了大量查找算法，该类代码将较复杂，维护较为困难。
+
+除了提供专门的查找算法类之外，还可以在客户端程序中直接包含算法代码，这种做法更不可取，将导致客户端程序庞大而且难以维护，如果存在大量可供选择的算法时问题将变得更加严重。
+
+为了解决这些问题，可以定义一些独立的类来封装不同的算法，每一个类封装一个具体的算法，在这里，每一个封装算法的类我们都可以称之为策略(Strategy)，为了保证这些策略的一致性，一般会用一个抽象的策略类来做算法的定义，而具体每种算法则对应于一个具体策略类。
+
+策略模式包含如下角色：
+- Context: 环境类，也叫上下文，对策略进行二次封装，目的是避免高层模块对策略的直接调用。
+- Strategy: 抽象策略类
+- ConcreteStrategy: 具体策略类，由一组封装了算法的类来担任，这些类之间可以根据需要自由替换
+```php
+interface Strategy
+{
+    public function sendEmail($email);
+}
+
+class ConcreteStrategyA implements Strategy
+{
+    public function sendEmail($email)
+    {
+        echo "使用策略A发邮件，发送给了{$email}";
+    }
+}
+
+class ConcreteStrategyB implements Strategy
+{
+    public function sendEmail($email)
+    {
+        echo "使用策略B发邮件，发送给了{$email}";
+    }
+}
+
+class Context
+{
+    private $strategy;
+    public function __construct(Strategy $strategy)
+    {
+        $this->strategy = $strategy;
+    }
+
+    public function send($email)
+    {
+        $this->strategy->sendEmail($email);
+    }
+}
+
+$context = new Context(new ConcreteStrategyA());
+$context->send('aa@qq.com');
+
+$context = new Context(new ConcreteStrategyB());
+$context->send('aa@qq.com');
+```
+
 参考：
 - https://github.com/me115/design_patterns
 - https://www.zhihu.com/question/20367734
