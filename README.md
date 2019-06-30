@@ -59,10 +59,12 @@
 
 ## Linux
 - [文件相关](./linux/file.md)
-- [管道相关](./linux/grep.md)
-- [shell脚本](./linux/shell.md)
+- [管道](./linux/pipe.md)
+- shell
 - [运维](./linux/devops.md)
 - [awk](./linux/awk.md)
+- grep
+- sed
 
 ## Redis
 - 数据类型
