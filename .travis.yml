@@ -18,7 +18,7 @@ branches:
     - master
 env:
   global:
-    - REF=github.com/ruesin/guangxin.git
+    - REF=github.com/ruesin/php-tree.git
 # deploy:
 #   provider: pages
 #   skip-cleanup: true
