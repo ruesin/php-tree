@@ -54,4 +54,24 @@ select  grade ,sum(score) from tables group by grade having sum(score) >200;
 select count(`name`) as cnt from tables where score > 60 group by `grade` having cnt > 2;
 ```
 
+## 无限极分类
+实现无限级的基本方案是构建树，Tree的核心思想是递归。
 
+最简单的方案为三个字段：
+- ID：主键
+- NAME：名称
+- PID：父ID
+
+扩展后方便查询：
+- ID：主键
+- NAME：名称
+- PID：父ID
+- PIDS：父ID列表，如：1,3,7
+- Depth：深度，如父ID为0的顶层分类深度为1
+
+预排序遍历树算法：
+- ID：主键
+- NAME：名称
+- PID：父ID
+- LFT：左下标，此节点所有子节点的ID都大于LFT。
+- RGT：右下标，此节点所有子节点的ID都小于LFT。
