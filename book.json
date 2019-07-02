@@ -1,0 +1,27 @@
+{
+    "title": "PHP技能树",
+    "author": "ruesin",
+    "description": "点亮PHPer的技能树",
+    "language": "zh-hans",
+    "structure": {
+        "readme": "README.md"
+    },
+    "links": {
+    },
+    "plugins": [
+        "github",
+        "toggle-chapters",
+        "back-to-top-button",
+        "tbfed-pagefooter"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/ruesin/php-tree"
+        },
+        "tbfed-pagefooter": {
+     	   "copyright":"",
+      	  "modify_label": "更新时间：",
+     	   "modify_format": "YYYY-MM-DD HH:mm:ss"
+  	  }
+    }
+}
