@@ -98,20 +98,24 @@ Dockerfile 由一行行命令语句组成，并且支持以 # 开头的注释行
   格式为`ONBUILD [INSTRUCTION]`。配置当所创建的镜像作为其它新创建镜像的基础镜像时，所执行的操作指令。
 
 > 例如，Dockerfile 使用如下的内容创建了镜像 image-A。
+
 ```
 [...]
 ONBUILD ADD . /app/src
 ONBUILD RUN /usr/local/bin/python-build --dir /app/src
 [...]
 ```
+
 > 如果基于 image-A 创建新的镜像时，新的Dockerfile中使用 FROM image-A指定基础镜像时，会自动执行ONBUILD 指令内容，等价于在后面添加了两条指令。
-```
+
+```dockerfile
 FROM image-A
 
 #Automatically run the following
 ADD . /app/src
 RUN /usr/local/bin/python-build --dir /app/src
 ```
+
 > 使用 ONBUILD 指令的镜像，推荐在标签中注明，例如 ruby:1.9-onbuild。
 
 ## 创建镜像
