@@ -7,6 +7,9 @@
         "readme": "README.md"
     },
     "links": {
+        "sidebar": {
+            "GitHub": "https://github.com/ruesin"
+        }
     },
     "plugins": [
         "github",
