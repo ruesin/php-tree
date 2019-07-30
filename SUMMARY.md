@@ -11,6 +11,7 @@
   - [魔术方法](/php/magic.md)
   - [反射](/php/reflection.md)
   - [数组对象](/php/array-object.md)
+  - 特性 Trait
   - 迭代器
   - 预定义接口
   - 字符串
@@ -77,5 +78,5 @@
   - [设计模式](/other/design-patterns.md)
   - rpc
   - 性能分析
-  - 排序算法
+  - [排序算法](/ohter/sorting-algorithm.md)
   - 查找算法
