@@ -34,14 +34,24 @@ PHP-FPM（FastCGI Process Manager）是FastCGI协议的一个实现，任何实�
 
 FPM是一个PHP进程管理器，包含master和worker两种进程。
 
-master进程只有一个，负责监听端口，接收来自服务器的请求，而worker进程则一般有多个（具体数量根据实际需要配置），每个进程内部都嵌入了一个PHP解释器，是PHP代码真正执行的地方。
+创建master进程后，创建worker pool、监听socket，然后根据配置fork出worker进程。
 
-从FPM接收到请求，到处理完毕，其具体的流程如下：
-- FPM的master进程接收到请求。
-- master进程根据配置指派特定的worker进程进行请求处理
-- 如果没有可用进程，返回错误，这也是我们配合Nginx遇到502错误比较多的原因。
-- worker进程处理请求，如果超时，返回504错误。
-- 请求处理结束，返回结果。
+master与worker不直接通信，master通过共享内存获取worker进程的信息，如worker进程当前状态、已处理请求数等，master要杀死worker进程也是通过发送信号。
+
+worker进程启动后阻塞在`fcgi_accept_request()`，等待accept请求，接收到请求后，读取数据、阻塞执行。
+
+master只负责子进程状态的管理，处理异步信号事件、定时事件等。
+
+[感谢指正](https://github.com/ruesin/php-tree/issues/1)
+
+~~master进程只有一个，负责监听端口，接收来自服务器的请求，而worker进程则一般有多个（具体数量根据实际需要配置），每个进程内部都嵌入了一个PHP解释器，是PHP代码真正执行的地方。~~
+
+~~从FPM接收到请求，到处理完毕，其具体的流程如下：~~
+- ~~FPM的master进程接收到请求。~~
+- ~~master进程根据配置指派特定的worker进程进行请求处理~~
+- ~~如果没有可用进程，返回错误，这也是我们配合Nginx遇到502错误比较多的原因。~~
+- ~~worker进程处理请求，如果超时，返回504错误。~~
+- ~~请求处理结束，返回结果。~~
 
 
 ## 通信
