@@ -6,3 +6,4 @@
 - [跨域](/web/cors.md)
 - 缓存
 - [RESTful](/web/rest.md)
+- [RPC](/web/rpc.md)
