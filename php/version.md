@@ -1,5 +1,473 @@
 # 版本
 
+## 8.0
+
+### 命名参数
+
+命名参数允许基于参数名而不是参数位置向函数传递参数。这使得参数的含义可以自我记录，使参数顺序独立，并允许任意跳过默认值。
+
+命名参数可以让函数或者方法的调用更加清晰直观，传入参数的顺序是和定义无关的，可以跳过位置靠前的可选参数。
+
+```php
+htmlspecialchars($string, double_encode: false);
+// Same as
+htmlspecialchars($string, ENT_COMPAT | ENT_HTML401, 'UTF-8', false);
+```
+
+### 联合类型
+
+联合类型（Union Types）是两种或多种类型的集合，用户可以使用其中一种。
+
+请注意，`void`永远不能是联合类型的一部分，因为它表示 “根本没有返回值”。此外，可以使用 `|null` 或使用现有的`?`符号来写`nullable`的联合类型。
+
+```php
+
+# PHP 7
+class Number {
+  /** @var int|float */
+  private $number;
+  /**
+   * @param float|int $number
+   */
+  public function __construct($number) {
+    $this->number = $number;
+  }
+}
+new Number('NaN'); // Ok
+
+# PHP 8
+class Number {
+  public function __construct(
+    private int|float $number
+  ) {}
+}
+new Number('NaN'); // TypeError
+```
+
+### 注解
+
+现在可以用原生的PHP语法来使用结构化的元数据，而不需要再依赖PHPDoc解析，性能也随之提升，可以通过反射直接获取元数据。
+
+```php
+
+// PHP 7
+class PostsController
+{
+    /**
+     * @Route("/api/posts/{id}", methods={"GET"})
+     */
+    public function get($id) { /* ... */ }
+}
+
+// PHP 8
+class PostsController
+{
+    #[Route("/api/posts/{id}", methods: ["GET"])]
+    public function get($id) { /* ... */ }
+}
+
+```
+
+### 构造器属性提升
+
+这个新的语法糖来用来创建值对象或数据传输对象。不用为类属性和构造函数指定它们，PHP 现在可以将它们合并为一个。
+
+```php
+// PHP 7
+class Point {
+  public float $x;
+  public float $y;
+  public float $z;
+  public function __construct(
+    float $x = 0.0,
+    float $y = 0.0,
+    float $z = 0.0
+  ) {
+    $this->x = $x;
+    $this->y = $y;
+    $this->z = $z;
+  }
+}
+
+// PHP 8
+class Point {
+  public function __construct(
+    public float $x = 0.0,
+    public float $y = 0.0,
+    public float $z = 0.0,
+  ) {}
+}
+
+```
+
+### Match 表达式
+
+新的 match 类似于 switch，`match`可以返回值，不需要`break`语句，可以组合条件，使用严格的类型比较，并且不执行任何类型的强制。
+- Match 是一个表达式，它可以储存到变量中亦可以直接返回。
+- Match 分支仅支持单行，它不需要一个 break; 语句。
+- Match 使用严格比较。
+
+```php
+
+$input = 8.0;
+
+// PHP 7
+switch ($input) {
+  case '8.0':
+  case '7.0':
+    $result = "Oh no!";
+    break;
+  case 8.0:
+    $result = "This is what I expected";
+    break;
+}
+echo $result;
+
+// PHP 8
+echo match ($input) {
+  '8.0', '7.0' => "Oh no!",
+  8.0 => "This is what I expected",
+};
+
+```
+
+### nullsafe 运算符
+现在可以用新的`nullsafe`运算符链式调用，而不需要条件检查`null`。如果链条中的一个元素失败了，整个链条会中止并认定为`Null`。
+```php
+
+// PHP 7
+$country =  null;
+if ($session !== null) {
+  $user = $session->user;
+  if ($user !== null) {
+    $address = $user->getAddress();
+ 
+    if ($address !== null) {
+      $country = $address->country;
+    }
+  }
+}
+
+// PHP 8
+$country = $session?->user?->getAddress()?->country;
+
+```
+### JIT
+PHP 8 引入了两个即时编译引擎。 Tracing JIT 在两个中更有潜力，它在综合基准测试中显示了三倍的性能， 并在某些长时间运行的程序中显示了 1.5-2 倍的性能改进。 典型的应用性能则和 PHP 7.4 不相上下。 
+
+JIT作为PHP底层编译引擎，对于PHP8的性能贡献是非常之大，不过对于常规WEB应用来说，优势不明显。
+
+### 新的类、接口、函数
+#### WeakMap
+
+`WeakMap` 保留对对象的引用，这不会阻止这些对象被垃圾回收。
+
+以`ORM`为例，它们通常会实现缓存，其缓存保存对实体类的引用，以提高实体之间关系的性能。只要该缓存具有对这些实体对象的引用，就不能对其进行垃圾回收，即使该缓存是唯一引用它们的对象也是如此。
+
+如果该缓存层使用了弱引用和映射，则 PHP 将在没有其他引用时对这些对象进行垃圾回收。尤其是对于 ORM，它可以管理一个请求中的数百个（乃至数千个）实体。Weak maps（弱映射）可以提供一种更好，对资源更友好的方式来处理这些对象。
+
+```php
+class Foo
+{
+    private WeakMap $cache;
+ 
+    public function getSomethingWithCaching(object $obj): object
+    {
+        return $this->cache[$obj]
+           ??= $this->computeSomethingExpensive($obj);
+    }
+}
+```
+
+#### Stringable接口
+Stringable接口可用于类型提示任何字符串或实现`__toString()`的内容。此外，每当一个类实现`__toString()`时，它就会自动实现幕后接口，而无需手动实现。
+```php
+class Foo 
+{ 
+    public function __toString(): string 
+    { 
+        return 'foo'; 
+    } 
+} 
+function bar(Stringable $stringable) { /* … */ } 
+bar(new Foo()); 
+bar('abc'); 
+
+```
+
+### str_contains()、str_starts_with()、str_ends_with()
+
+```php 
+if (strpos('string with lots of words', 'words') !== false) { /* … */ }
+
+if (str_contains('string with lots of words', 'words')) { /* … */ }
+
+str_starts_with('haystack', 'hay'); // true
+str_ends_with('haystack', 'stack'); // true
+
+```
+#### fdiv()
+新的fdiv()函数与fmod()和intdiv()函数的功能相似，允许被 0 除。根据情况你会得到INF、-INF或NAN，而不是错误。
+
+#### get_debug_type()函数
+
+get_debug_type()返回一个变量的类型。听起来像gettype()的功能？get_debug_type()为数组、字符串、匿名类和对象返回更有用的输出。
+
+例如，在类\Foo\Bar上调用gettype()将返回object。使用get_debug_type()将返回类名称。
+
+#### get_resource_id()函数
+
+Resources 是 PHP 中的特殊变量，指的是外部资源。一个例子是 MySQL 连接，另一个是文件句柄。
+
+这些资源中每一个都分配了一个 ID，但以前唯一知道该 ID 的方法是将资源转换为int：
+
+$resourceId = (int) $resource; 
+
+PHP 8 添加了get_resource_id()函数，让这个操作更加明显易懂，且类型安全：
+
+$resourceId = get_resource_id($resource); 
+
+
+#### token_get_all() 对象实现 
+
+函数的作用是：返回值的是一个数组。
+此 RFC 使用 PhpToken::getall () 方法添加一个 PhpToken 类。
+此实现使用对象，而不是普通值。
+它消耗更少的内存，更容易阅读。
+
+#### New DOM Traversal and Manipulation APIs
+
+
+### 类型系统与错误处理的改进
+
+#### 算术/位运算符更严格的类型检测
+在 PHP 8 之前，可以在数组、资源或对象上应用算术或按位运算符。现在就不行了，新版将抛出TypeError：
+```php
+[] % [42]; 
+$object + 4; 
+```
+
+#### traits 中的抽象方法改进
+
+Traits 可以指定抽象方法，这些方法必须由使用它们的类实现。在PHP8，必须保持一致的方法定义，包括参数类型和返回类型。
+``` php
+trait MyTrait {
+    abstract private function neededByTheTrait(): string;
+ 
+    public function doSomething() {
+        return strlen($this->neededByTheTrait());
+    }
+}
+ 
+class TraitUser {
+    use MyTrait;
+ 
+    // This is allowed:
+    private function neededByTheTrait(): string { }
+ 
+    // This is forbidden (incorrect return type)
+    private function neededByTheTrait(): stdClass { }
+ 
+    // This is forbidden (non-static changed to static)
+    private static function neededByTheTrait(): string { }
+}
+```
+
+#### 确保魔术方法签名正确
+
+#### PHP 引擎 warning 警告的重新分类
+
+#### 不兼容的方法签名导致 Fatal 错误
+
+#### 操作符 @ 不再抑制 fatal 错误。 
+此更改可能会揭示在 PHP8 之前隐藏的错误。请确保在生产服务器上设置 display_errors=off ！
+
+#### 私有方法继承
+
+以前，PHP 曾经对公共、保护和私有方法应用相同的继承检查。换句话说：私有方法应遵循与保护方法和公共方法相同的方法签名规则。这是没有道理的，因为子类将无法访问私有方法。
+
+该 RFC 更改了这个行为，因此不再对私有方法执行这些继承检查。此外，使用final private function也没有意义，因此，现在它将触发警告：
+
+Warning: Private methods cannot be final as they are never overridden by other classes 
+
+#### Mixed 类型
+
+`mixed`本身是以下类型之一：
+- array
+- bool
+- callable
+- int
+- float
+- null
+- object
+- resource
+- string
+
+注意，mixed也可以用作参数或属性类型，而不仅仅是返回类型。
+
+另外由于mixed已经包含null，因此不允许将其设置为nullable。以下内容将触发错误：
+```php
+function bar(): ?mixed {} 
+```
+
+#### Static 返回类型
+
+虽然现在的 PHP 已经可以返回self，但是直到 PHP 8 中static才是有效的返回类型。考虑到 PHP 动态类型的性质，这个特性对许多开发人员都非常有用。
+```php
+class Foo 
+{ 
+    public function test(): static 
+    { 
+        return new static(); 
+    } 
+} 
+
+```
+
+#### 内部函数的类型
+
+#### 扩展 Curl、 Gd、 Sockets、 OpenSSL、 XMLWriter、 XML 以 Opaque 对象替换 resource
+
+
+### 其他语法调整和改进
+
+#### 允许参数列表中的末尾逗号、闭包 use 列表中的末尾逗号
+
+现在的 PHP，虽然可以调用函数时在尾部加逗号，但参数列表中仍然缺少对尾部逗号的支持。PHP 8 现在允许使用它，也就是说你可以执行以下操作：
+
+```php
+public function( 
+    string $parameterA, 
+    int $parameterB, 
+    Foo $objectfoo, 
+) { 
+    // 注意上面最后一个逗号… 
+} 
+```
+
+#### 无变量捕获的 catch
+在 PHP 8 之前，每当你想捕获一个异常时都必须将其存储在一个变量中，不管你是否使用这个变量。现在使用非捕获 catches，你也可以忽略变量。
+
+请注意，你必须始终指定类型，不允许使用空catch。如果要捕获所有的异常和错误，可以使用Throwable作为捕获类型。
+
+```php
+// PHP 7 
+try { 
+    // Something goes wrong 
+} catch (MySpecialException $exception) { 
+    Log::error("Something went wrong"); 
+} 
+
+// PHP 8
+try { 
+    // Something goes wrong 
+} catch (MySpecialException) { 
+    Log::error("Something went wrong"); 
+} 
+
+```
+#### 变量语法的调整
+
+#### Namespace 名称作为单个 token
+
+#### Throw 表达式
+将throw从语句变为表达式，这样就可以在许多新场景中抛出异常。
+```php
+$triggerError = fn () => throw new MyError(); 
+$foo = $bar['offset'] ?? throw new OffsetDoesNotExist('offset'); 
+```
+
+#### 可以在对象上使用::class
+
+一个小而有用的新特性：现在可以对对象使用`::class`，而不必对它们使用`get_class()`，工作方式与`get_class()`相同。
+
+```php
+$foo = new Foo();
+
+var_dump($foo::class);
+```
+
+### 其它特性
+
+#### 字符串与数字的比较更符合逻辑
+PHP 8 比较数字字符串（numeric string）时，会按数字进行比较。 不是数字字符串时，将数字转化为字符串，按字符串比较。
+```php
+// PHP 7
+0 == 'foobar' // true
+// PHP 8
+0 == 'foobar' // false
+```
+
+#### 从接口创建DateTime对象
+
+你已经可以使用DateTime::createFromImmutable($immutableDateTime)从DateTimeImmutable对象创建DateTime对象，但反过来就很麻烦。
+
+PHP 8 添加了DateTime::createFromInterface()和DatetimeImmutable::createFromInterface()，所以现在有一种通用的方法可以将DateTime和DateTimeImmutable对象彼此转换。
+
+```php
+DateTime::createFromInterface(DateTimeInterface $other); 
+DateTimeImmutable::createFromInterface(DateTimeInterface $other); 
+```
+
+#### 内部函数类型错误的一致性
+现在大多数内部函数在参数验证失败时抛出 Error 级异常。
+```php
+// PHP 7
+strlen([]); // Warning: strlen() expects parameter 1 to be string, array given
+array_chunk([], -1); // Warning: array_chunk(): Size parameter expected to be greater than 0
+
+// PHP 8
+strlen([]); // TypeError: strlen(): Argument #1 ($str) must be of type string, array given
+array_chunk([], -1); // ValueError: array_chunk(): Argument #2 ($length) must be greater than 0
+```
+
+#### 默认错误报告级别
+
+现在是E_ALL，而不是E_NOTICE和E_DEPRECATED。这意味着新版可能会弹出许多错误，这些错误在 PHP 8 以前会被静默忽略。
+
+
+#### 串联优先级
+虽然在 PHP7.4 中已不推荐使用，但此更改现在生效。
+如果你这样写的话：
+
+```php
+echo "sum: " . $a + $b;
+
+// PHP 7
+// echo ("sum: " . $a) + $b;
+
+// PHP 8
+echo "sum: " . ($a + $b);
+```
+
+#### 反射方法签名更改
+
+反射类的三个方法签名已更改：
+```php
+ReflectionClass::newInstance($args);
+ReflectionFunction::invoke($args);
+ReflectionMethod::invoke($object, $args);
+```
+现已成为：
+```php
+ReflectionClass::newInstance(...$args);
+ReflectionFunction::invoke(...$args);
+ReflectionMethod::invoke($object, ...$args);
+```
+升级指南指定，如果您扩展了这些类，并且仍然希望同时支持 PHP 7 和 PHP 8，则允许以下签名：
+```php
+ReflectionClass::newInstance($arg = null, ...$args);
+ReflectionFunction::invoke($arg = null, ...$args);
+ReflectionMethod::invoke($object, $arg = null, ...$args);
+```
+
+#### ext-json始终可用
+
+以前，可以在不启用 JSON 扩展的情况下编译 PHP，以后就不行了。现在，开发人员知道 JSON 是一直能用的，而不需要提前确认扩展是否可用。由于 JSON 非常流行，所以这个改进很方便。
+
+
+### 参考：
+- https://www.php.net/releases/8.0/zh.php
 
 ## PHP7 性能提升
 
