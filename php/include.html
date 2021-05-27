@@ -1,0 +1,1659 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>require/include · PHP技能树</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="ruesin">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="pass-value.html" />
+    
+    
+    <link rel="prev" href="array.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/ruesin" target="_blank" class="custom-link">GitHub</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    PHP
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="life-cycle.html">
+            
+                <a href="life-cycle.html">
+            
+                    
+                    生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="variable.html">
+            
+                <a href="variable.html">
+            
+                    
+                    变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="array.html">
+            
+                <a href="array.html">
+            
+                    
+                    数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.4" data-path="include.html">
+            
+                <a href="include.html">
+            
+                    
+                    require/include
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="pass-value.html">
+            
+                <a href="pass-value.html">
+            
+                    
+                    传值/传引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="version.html">
+            
+                <a href="version.html">
+            
+                    
+                    版本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" >
+            
+                <span>
+            
+                    
+                    扩展
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="generator.html">
+            
+                <a href="generator.html">
+            
+                    
+                    生成器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="magic.html">
+            
+                <a href="magic.html">
+            
+                    
+                    魔术方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="reflection.html">
+            
+                <a href="reflection.html">
+            
+                    
+                    反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="array-object.html">
+            
+                <a href="array-object.html">
+            
+                    
+                    数组对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" >
+            
+                <span>
+            
+                    
+                    特性 Trait
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" >
+            
+                <span>
+            
+                    
+                    迭代器
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" >
+            
+                <span>
+            
+                    
+                    预定义接口
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" >
+            
+                <span>
+            
+                    
+                    字符串
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" >
+            
+                <span>
+            
+                    
+                    SPL
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" >
+            
+                <span>
+            
+                    
+                    500
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" >
+            
+                <span>
+            
+                    
+                    接口/抽象方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../framework/">
+            
+                <a href="../framework/">
+            
+                    
+                    框架
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../framework/composer.html">
+            
+                <a href="../framework/composer.html">
+            
+                    
+                    composer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../framework/autoload.html">
+            
+                <a href="../framework/autoload.html">
+            
+                    
+                    autoload
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../framework/container.html">
+            
+                <a href="../framework/container.html">
+            
+                    
+                    依赖注入&容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../framework/route.html">
+            
+                <a href="../framework/route.html">
+            
+                    
+                    路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../framework/middleware.html">
+            
+                <a href="../framework/middleware.html">
+            
+                    
+                    中间件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" >
+            
+                <span>
+            
+                    
+                    RBAC
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../mysql/">
+            
+                <a href="../mysql/">
+            
+                    
+                    MySQL
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../mysql/">
+            
+                <a href="../mysql/">
+            
+                    
+                    索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../mysql/transaction.html">
+            
+                <a href="../mysql/transaction.html">
+            
+                    
+                    事务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../mysql/replication.html">
+            
+                <a href="../mysql/replication.html">
+            
+                    
+                    主从
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../mysql/partition.html">
+            
+                <a href="../mysql/partition.html">
+            
+                    
+                    分区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../mysql/engine.html">
+            
+                <a href="../mysql/engine.html">
+            
+                    
+                    引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../mysql/question.html">
+            
+                <a href="../mysql/question.html">
+            
+                    
+                    具体问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../web/">
+            
+                <a href="../web/">
+            
+                    
+                    Web
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../web/web.html">
+            
+                <a href="../web/web.html">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../web/cookie.html">
+            
+                <a href="../web/cookie.html">
+            
+                    
+                    session/cookie
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../web/jwt.html">
+            
+                <a href="../web/jwt.html">
+            
+                    
+                    jwt
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../web/attack.html">
+            
+                <a href="../web/attack.html">
+            
+                    
+                    攻击及防御
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../web/cors.html">
+            
+                <a href="../web/cors.html">
+            
+                    
+                    跨域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" >
+            
+                <span>
+            
+                    
+                    缓存
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../web/rest.html">
+            
+                <a href="../web/rest.html">
+            
+                    
+                    RESTful
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../web/rpc.html">
+            
+                <a href="../web/rpc.html">
+            
+                    
+                    RPC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../nginx/">
+            
+                <a href="../nginx/">
+            
+                    
+                    Nginx
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../nginx/php.html">
+            
+                <a href="../nginx/php.html">
+            
+                    
+                    php-fpm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" >
+            
+                <span>
+            
+                    
+                    lua
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../nginx/balance.html">
+            
+                <a href="../nginx/balance.html">
+            
+                    
+                    负载均衡
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" >
+            
+                <span>
+            
+                    
+                    代理
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../swoole/">
+            
+                <a href="../swoole/">
+            
+                    
+                    Swoole
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" >
+            
+                <span>
+            
+                    
+                    Server
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" >
+            
+                <span>
+            
+                    
+                    项目
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../swoole/coroutine.html">
+            
+                <a href="../swoole/coroutine.html">
+            
+                    
+                    协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../linux/">
+            
+                <a href="../linux/">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../linux/file.html">
+            
+                <a href="../linux/file.html">
+            
+                    
+                    文件相关
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../linux/pipe.html">
+            
+                <a href="../linux/pipe.html">
+            
+                    
+                    管道
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" >
+            
+                <span>
+            
+                    
+                    shell
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../linux/devops.html">
+            
+                <a href="../linux/devops.html">
+            
+                    
+                    运维
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../linux/awk.html">
+            
+                <a href="../linux/awk.html">
+            
+                    
+                    awk
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" >
+            
+                <span>
+            
+                    
+                    grep
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" >
+            
+                <span>
+            
+                    
+                    sed
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../redis/">
+            
+                <a href="../redis/">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" >
+            
+                <span>
+            
+                    
+                    数据类型
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" >
+            
+                <span>
+            
+                    
+                    指令
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" >
+            
+                <span>
+            
+                    
+                    分布式
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../docker/">
+            
+                <a href="../docker/">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../docker/docker.html">
+            
+                <a href="../docker/docker.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../docker/dockerfile.html">
+            
+                <a href="../docker/dockerfile.html">
+            
+                    
+                    Dockerfile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" >
+            
+                <span>
+            
+                    
+                    k8s
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../other/">
+            
+                <a href="../other/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../other/design-patterns.html">
+            
+                <a href="../other/design-patterns.html">
+            
+                    
+                    设计模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" >
+            
+                <span>
+            
+                    
+                    rpc
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" >
+            
+                <span>
+            
+                    
+                    性能分析
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../ohter/sorting-algorithm.html">
+            
+                <a href="../ohter/sorting-algorithm.html">
+            
+                    
+                    排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" >
+            
+                <span>
+            
+                    
+                    查找算法
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >require/include</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="includerequire">include&amp;require</h1>
+<p>include&#x3001;require &#x5305;&#x542B;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#xFF0C;&#x88AB;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x5148;&#x6309;&#x53C2;&#x6570;&#x7ED9;&#x51FA;&#x7684;&#x8DEF;&#x5F84;&#x5BFB;&#x627E;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x7ED9;&#x51FA;&#x76EE;&#x5F55;&#xFF08;&#x53EA;&#x6709;&#x6587;&#x4EF6;&#x540D;&#xFF09;&#x65F6;&#x5219;&#x6309;&#x7167; include_path &#x6307;&#x5B9A;&#x7684;&#x76EE;&#x5F55;&#x5BFB;&#x627E;&#x3002;&#x5982;&#x679C;&#x5728; include_path &#x4E0B;&#x6CA1;&#x627E;&#x5230;&#x8BE5;&#x6587;&#x4EF6;&#x5219; include &#x6700;&#x540E;&#x624D;&#x5728;&#x8C03;&#x7528;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x6240;&#x5728;&#x7684;&#x76EE;&#x5F55;&#x548C;&#x5F53;&#x524D;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x4E0B;&#x5BFB;&#x627E;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5B9A;&#x4E49;&#x4E86;&#x8DEF;&#x5F84;&#xFF0C;&#x4E0D;&#x7BA1;&#x662F;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x8FD8;&#x662F;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x7684;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;include_path &#x90FD;&#x4F1A;&#x88AB;&#x5B8C;&#x5168;&#x5FFD;&#x7565;&#x3002;&#x4F8B;&#x5982;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4EE5; ../ &#x5F00;&#x5934;&#xFF0C;&#x5219;&#x89E3;&#x6790;&#x5668;&#x4F1A;&#x5728;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x7684;&#x7236;&#x76EE;&#x5F55;&#x4E0B;&#x5BFB;&#x627E;&#x8BE5;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x88AB;&#x5305;&#x542B;&#x65F6;&#xFF0C;&#x5176;&#x4E2D;&#x6240;&#x5305;&#x542B;&#x7684;&#x4EE3;&#x7801;&#x7EE7;&#x627F;&#x4E86; include &#x6240;&#x5728;&#x884C;&#x7684;&#x53D8;&#x91CF;&#x8303;&#x56F4;&#x3002;&#x4ECE;&#x8BE5;&#x5904;&#x5F00;&#x59CB;&#xFF0C;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x5728;&#x8BE5;&#x884C;&#x5904;&#x53EF;&#x7528;&#x7684;&#x4EFB;&#x4F55;&#x53D8;&#x91CF;&#x5728;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x6587;&#x4EF6;&#x4E2D;&#x4E5F;&#x90FD;&#x53EF;&#x7528;&#x3002;&#x4E0D;&#x8FC7;&#x6240;&#x6709;&#x5728;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;&#x548C;&#x7C7B;&#x90FD;&#x5177;&#x6709;&#x5168;&#x5C40;&#x4F5C;&#x7528;&#x57DF;&#x3002;</p>
+<p>include&#x662F;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x52A0;&#x8F7D;&#x6587;&#x4EF6;&#x5E76;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x7406;&#x89E3; include &#x5C31;&#x662F;&#x628A;&#x5176;&#x5B83;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#x62F7;&#x8D1D;&#x5230;&#x4E86;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x7C7B;&#x4F3C;C&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5B8F;(&#x5F53;&#x7136;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#x5E76;&#x4E0D;&#x662F;&#x8FD9;&#x6837;)&#x3002;</p>
+<h2 id="&#x533A;&#x522B;">&#x533A;&#x522B;</h2>
+<p>require &#x548C; include &#x51E0;&#x4E4E;&#x5B8C;&#x5168;&#x4E00;&#x6837;&#xFF0C;&#x53EA;&#x662F;&#x5904;&#x7406;&#x5931;&#x8D25;&#x7684;&#x65B9;&#x5F0F;&#x4E0D;&#x540C;&#x3002;require &#x5728;&#x51FA;&#x9519;&#xFF08;&#x672A;&#x627E;&#x5230;&#x6587;&#x4EF6;&#xFF09;&#x65F6;&#x4EA7;&#x751F; E_COMPILE_ERROR &#x7EA7;&#x522B;&#x7684;&#x9519;&#x8BEF;&#x3002;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#x5C06;&#x5BFC;&#x81F4;&#x811A;&#x672C;&#x4E2D;&#x6B62;&#x800C; include &#x53EA;&#x4EA7;&#x751F;&#x8B66;&#x544A;&#xFF08;E_WARNING&#xFF09;&#xFF0C;&#x811A;&#x672C;&#x4F1A;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#x3002;</p>
+<p>include_once&#x3001;require_once &#x4E0E; include&#x3001;require&#x7684;&#x533A;&#x522B;&#x662F;&#x5728;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x4E2D;&#x540C;&#x4E00;&#x6587;&#x4EF6;&#x53EA;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#x4E00;&#x6B21;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x6267;&#x884C;&#x65F6;&#x4F1A;&#x628A;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x5728;EG(included_files)&#x54C8;&#x5E0C;&#x8868;&#x4E2D;&#xFF0C;&#x518D;&#x6B21;&#x52A0;&#x8F7D;&#x65F6;&#x68C0;&#x67E5;&#x8FD9;&#x4E2A;&#x54C8;&#x5E0C;&#x8868;&#xFF0C;&#x5982;&#x679C;&#x53D1;&#x73B0;&#x5DF2;&#x7ECF;&#x52A0;&#x8F7D;&#x8FC7;&#x5219;&#x76F4;&#x63A5;&#x8DF3;&#x8FC7;&#x3002;</p>
+<h2 id="&#x539F;&#x7406;">&#x539F;&#x7406;</h2>
+<p>PHP&#x7248;&#x672C;<code>7.2.7</code>&#xFF0C;PHP&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-comment">//a.php</span>
+$var_1 = <span class="hljs-string">&quot;hi&quot;</span>;
+$var_2 = <span class="hljs-keyword">array</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
+
+<span class="hljs-keyword">include</span> <span class="hljs-string">&apos;b.php&apos;</span>;
+
+var_dump($var_2);
+var_dump($var_3);
+
+<span class="hljs-comment">//b.php</span>
+$var_2 = <span class="hljs-keyword">array</span>();
+$var_3 = <span class="hljs-number">9</span>;
+</code></pre>
+<p>&#x6267;&#x884C;php a.php&#x7ED3;&#x679C;&#x663E;&#x793A;<code>$var_2</code>&#x503C;&#x88AB;&#x4FEE;&#x6539;&#x4E3A;<code>array()</code>&#x4E86;&#xFF0C;&#x800C;include&#x6587;&#x4EF6;&#x4E2D;&#x65B0;&#x5B9A;&#x4E49;&#x7684;<code>$var_3</code>&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528;&#x3002;</p>
+<p>Zend&#x5F15;&#x64CE;&#x6709;&#x7F16;&#x8BD1;&#x3001;&#x6267;&#x884C;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x7684;&#x8F93;&#x5165;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x7ECF;&#x8FC7;<code>PHP&#x4EE3;&#x7801;-&gt;AST-&gt;Opcodes-&gt;execute</code>&#x4E00;&#x7CFB;&#x5217;&#x8FC7;&#x7A0B;&#x5B8C;&#x6210;&#x6574;&#x4E2A;&#x5904;&#x7406;&#xFF0C;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x7684;&#x8F93;&#x5165;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x8F93;&#x51FA;&#x662F;zend_op_array&#xFF0C;&#x8F93;&#x51FA;&#x63A5;&#x7740;&#x6210;&#x4E3A;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x800C;include&#x7684;&#x5904;&#x7406;&#x5B9E;&#x9645;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF0C;&#x6267;&#x884C;include&#x65F6;&#x628A;&#x88AB;&#x5305;&#x542B;&#x7684;&#x6587;&#x4EF6;&#x50CF;&#x4E3B;&#x811A;&#x672C;&#x4E00;&#x6837;&#x7F16;&#x8BD1;&#x7136;&#x540E;&#x6267;&#x884C;&#xFF0C;&#x63A5;&#x7740;&#x5728;&#x56DE;&#x5230;&#x8C03;&#x7528;&#x5904;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;</p>
+<p><img src="../images/php/include-1.png" alt="cycle"></p>
+<p><img src="../images/php/include-2.png" alt="include"></p>
+<h3 id="&#x6D41;&#x7A0B;">&#x6D41;&#x7A0B;</h3>
+<p>&#x901A;&#x8FC7;OPCODE&#x5DE5;&#x5177;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;include&#x7684;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x7F16;&#x8BD1;&#x4E3A;&#x4E00;&#x6761;opcode&#xFF1A;<code>ZEND_INCLUDE_OR_EVAL</code>&#xFF0C;<code>INCLUDE_OR_EVAL</code>&#x5BF9;&#x5E94;&#x7684;&#x6267;&#x884C;&#x51FD;&#x6570;&#x662F;<code>ZEND_INCLUDE_OR_EVAL_SPEC_CONST_HANDLER</code>&#x3002;</p>
+<p>&#x5728;<code>Zend/zend_vm_execute.h</code>&#x4E2D;&#x67E5;&#x770B;&#x51FD;&#x6570;&#x6E90;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-c"><span class="hljs-function"><span class="hljs-keyword">static</span> ZEND_OPCODE_HANDLER_RET ZEND_FASTCALL <span class="hljs-title">ZEND_INCLUDE_OR_EVAL_SPEC_CONST_HANDLER</span><span class="hljs-params">(ZEND_OPCODE_HANDLER_ARGS)</span>
+</span>{
+    USE_OPLINE
+    <span class="hljs-comment">//include&#x6587;&#x4EF6;&#x7F16;&#x8BD1;&#x7684;zend_op_array</span>
+    zend_op_array *new_op_array;
+
+    zval *inc_filename;
+
+    SAVE_OPLINE();
+    inc_filename = EX_CONSTANT(opline-&gt;op1);
+    <span class="hljs-comment">// &#x7F16;&#x8BD1;include&#x7684;&#x6587;&#x4EF6;</span>
+    new_op_array = zend_include_or_eval(inc_filename, opline-&gt;extended_value);
+
+    <span class="hljs-keyword">if</span> (UNEXPECTED(EG(exception) != <span class="hljs-literal">NULL</span>)) {
+        <span class="hljs-keyword">if</span> (new_op_array != ZEND_FAKE_OP_ARRAY &amp;&amp; new_op_array != <span class="hljs-literal">NULL</span>) {
+            destroy_op_array(new_op_array);
+            efree_size(new_op_array, <span class="hljs-keyword">sizeof</span>(zend_op_array));
+        }
+        UNDEF_RESULT();
+        HANDLE_EXCEPTION();
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (new_op_array == ZEND_FAKE_OP_ARRAY) {
+        <span class="hljs-keyword">if</span> (RETURN_VALUE_USED(opline)) {
+            ZVAL_TRUE(EX_VAR(opline-&gt;result.var));
+        }
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (EXPECTED(new_op_array != <span class="hljs-literal">NULL</span>)) {
+        zval *return_value = <span class="hljs-literal">NULL</span>;
+        zend_execute_data *call;
+
+        <span class="hljs-keyword">if</span> (RETURN_VALUE_USED(opline)) {
+            return_value = EX_VAR(opline-&gt;result.var);
+            ZVAL_NULL(return_value);
+        }
+
+        new_op_array-&gt;scope = EX(func)-&gt;op_array.scope;
+
+        <span class="hljs-comment">//&#x5206;&#x914D;&#x8FD0;&#x884C;&#x65F6;&#x7684;zend_execute_data</span>
+        call = zend_vm_stack_push_call_frame(ZEND_CALL_NESTED_CODE | ZEND_CALL_HAS_SYMBOL_TABLE,
+            (zend_function*)new_op_array, <span class="hljs-number">0</span>,
+            Z_TYPE(EX(This)) != IS_OBJECT ? Z_CE(EX(This)) : <span class="hljs-literal">NULL</span>,
+            Z_TYPE(EX(This)) == IS_OBJECT ? Z_OBJ(EX(This)) : <span class="hljs-literal">NULL</span>);
+
+        <span class="hljs-comment">//&#x7EE7;&#x627F;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7B26;&#x53F7;&#x8868;</span>
+        <span class="hljs-keyword">if</span> (EX_CALL_INFO() &amp; ZEND_CALL_HAS_SYMBOL_TABLE) {
+            call-&gt;symbol_table = EX(symbol_table);
+        } <span class="hljs-keyword">else</span> {
+            call-&gt;symbol_table = zend_rebuild_symbol_table();
+        }
+
+        <span class="hljs-comment">//&#x4FDD;&#x5B58;&#x5F53;&#x524D;zend_execute_data&#xFF0C;include&#x6267;&#x884C;&#x5B8C;&#x518D;&#x8FD8;&#x539F;</span>
+        call-&gt;prev_execute_data = execute_data;
+
+        <span class="hljs-comment">//&#x6267;&#x884C;&#x524D;&#x521D;&#x59CB;&#x5316;</span>
+        i_init_code_execute_data(call, new_op_array, return_value);
+
+        <span class="hljs-comment">//zend_execute_ex&#x6267;&#x884C;&#x5668;&#x5165;&#x53E3;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x81EA;&#x5B9A;&#x4E49;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5219;&#x9ED8;&#x8BA4;&#x4E3A;execute_ex()</span>
+        <span class="hljs-keyword">if</span> (EXPECTED(zend_execute_ex == execute_ex)) {
+            <span class="hljs-comment">//&#x5C06;&#x6267;&#x884C;&#x5668;&#x5207;&#x5230;&#x65B0;&#x7684;zend_execute_data&#xFF0C;&#x56DE;&#x5FC6;&#x4E0B;execute_ex()&#x4E2D;&#x7684;&#x5207;&#x6362;&#x8FC7;&#x7A0B;</span>
+            ZEND_VM_ENTER();
+        } <span class="hljs-keyword">else</span> {
+            ZEND_ADD_CALL_FLAG(call, ZEND_CALL_TOP);
+            zend_execute_ex(call);
+            zend_vm_stack_free_call_frame(call);
+        }
+
+        destroy_op_array(new_op_array);
+        efree_size(new_op_array, <span class="hljs-keyword">sizeof</span>(zend_op_array));
+        <span class="hljs-keyword">if</span> (UNEXPECTED(EG(exception) != <span class="hljs-literal">NULL</span>)) {
+            zend_rethrow_exception(execute_data);
+            UNDEF_RESULT();
+            HANDLE_EXCEPTION();
+        }
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (RETURN_VALUE_USED(opline)) {
+        ZVAL_FALSE(EX_VAR(opline-&gt;result.var));
+    }
+    ZEND_VM_SET_OPCODE(opline + <span class="hljs-number">1</span>);
+    ZEND_VM_CONTINUE();
+}
+</code></pre>
+<p>&#x6267;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x5B9E;&#x9645;&#x975E;&#x5E38;&#x50CF;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;&#xFF0C;&#x9996;&#x5148;&#x4E5F;&#x662F;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x4E86;&#x4E00;&#x4E2A;<code>zend_execute_data</code>&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x6267;&#x884C;&#x5668;&#x5207;&#x5230;&#x65B0;&#x7684;<code>zend_execute_data</code>&#xFF0C;&#x6267;&#x884C;&#x5B8C;&#x4EE5;&#x540E;&#x518D;&#x5207;&#x56DE;&#x8C03;&#x7528;&#x5904;&#x3002;</p>
+<p>&#x7F16;&#x8BD1;include&#x6587;&#x4EF6;&#x662F;&#x8C03;&#x7528;<code>zend_include_or_eval()</code>&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-c">static zend_never_inline zend_op_array* ZEND_FASTCALL zend_include_or_eval(zval *inc_filename, int type) /* {{{ */
+{
+    zend_op_array *new_op_array = NULL;
+    zval tmp_inc_filename;
+
+    ZVAL_UNDEF(&amp;tmp_inc_filename);
+    if (Z_TYPE_P(inc_filename) != IS_STRING) {
+        ZVAL_STR(&amp;tmp_inc_filename, zval_get_string(inc_filename));
+        inc_filename = &amp;tmp_inc_filename;
+    }
+
+    if (type != ZEND_EVAL &amp;&amp; strlen(Z_STRVAL_P(inc_filename)) != Z_STRLEN_P(inc_filename)) {
+        // &#x6587;&#x4EF6;&#x540D;&#x9519;&#x8BEF;
+        if (type == ZEND_INCLUDE_ONCE || type == ZEND_INCLUDE) {
+            zend_message_dispatcher(ZMSG_FAILED_INCLUDE_FOPEN, Z_STRVAL_P(inc_filename));
+        } else {
+            zend_message_dispatcher(ZMSG_FAILED_REQUIRE_FOPEN, Z_STRVAL_P(inc_filename));
+        }
+    } else {
+        switch (type) {
+            case ZEND_INCLUDE_ONCE:
+            case ZEND_REQUIRE_ONCE: {
+                    zend_file_handle file_handle;
+                    zend_string *resolved_path;
+
+                    resolved_path = zend_resolve_path(Z_STRVAL_P(inc_filename), (int)Z_STRLEN_P(inc_filename));
+                    if (resolved_path) {
+                        // &#x6587;&#x4EF6;&#x5B58;&#x5728; EG(included_files)&#x54C8;&#x5E0C;&#x8868;&#x4E2D;&#xFF0C;&#x76F4;&#x63A5;&#x8DF3;&#x8FC7;&#xFF0C;&#x7F16;&#x8BD1;&#x5B8C;&#x6210;
+                        if (zend_hash_exists(&amp;EG(included_files), resolved_path)) {
+                            goto already_compiled;
+                        }
+                    } else {
+                        resolved_path = zend_string_copy(Z_STR_P(inc_filename));
+                    }
+
+                    if (SUCCESS == zend_stream_open(ZSTR_VAL(resolved_path), &amp;file_handle)) {
+
+                        if (!file_handle.opened_path) {
+                            file_handle.opened_path = zend_string_copy(resolved_path);
+                        }
+                        // &#x5C06;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x5230;EG(included_files)&#x54C8;&#x5E0C;&#x8868;&#x4E2D;&#xFF0C;&#x5E76;&#x5F00;&#x59CB;&#x7F16;&#x8BD1;
+                        if (zend_hash_add_empty_element(&amp;EG(included_files), file_handle.opened_path)) {
+                            //&#x5C06;include&#x6587;&#x4EF6;&#x7684;PHP&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x6210;opcodes
+                            zend_op_array *op_array = zend_compile_file(&amp;file_handle, (type==ZEND_INCLUDE_ONCE?ZEND_INCLUDE:ZEND_REQUIRE));
+                            zend_destroy_file_handle(&amp;file_handle);
+                            zend_string_release(resolved_path);
+                            if (Z_TYPE(tmp_inc_filename) != IS_UNDEF) {
+                                zend_string_release(Z_STR(tmp_inc_filename));
+                            }
+                            return op_array;
+                        } else {
+                            zend_file_handle_dtor(&amp;file_handle);
+already_compiled:
+                            new_op_array = ZEND_FAKE_OP_ARRAY;
+                        }
+                    } else {
+                        if (type == ZEND_INCLUDE_ONCE) {
+                            zend_message_dispatcher(ZMSG_FAILED_INCLUDE_FOPEN, Z_STRVAL_P(inc_filename));
+                        } else {
+                            zend_message_dispatcher(ZMSG_FAILED_REQUIRE_FOPEN, Z_STRVAL_P(inc_filename));
+                        }
+                    }
+                    zend_string_release(resolved_path);
+                }
+                break;
+            case ZEND_INCLUDE:
+            case ZEND_REQUIRE:
+                //&#x7F16;&#x8BD1;include&#x6587;&#x4EF6;
+                new_op_array = compile_filename(type, inc_filename);
+                break;
+            case ZEND_EVAL: {
+                    char *eval_desc = zend_make_compiled_string_description(&quot;eval()&apos;d code&quot;);
+                    new_op_array = zend_compile_string(inc_filename, eval_desc);
+                    efree(eval_desc);
+                }
+                break;
+            EMPTY_SWITCH_DEFAULT_CASE()
+        }
+    }
+    if (Z_TYPE(tmp_inc_filename) != IS_UNDEF) {
+        zend_string_release(Z_STR(tmp_inc_filename));
+    }
+    return new_op_array;
+}
+/* }}} */
+</code></pre>
+<pre><code class="lang-c"><span class="hljs-function">zend_op_array *<span class="hljs-title">compile_filename</span><span class="hljs-params">(<span class="hljs-keyword">int</span> type, zval *filename)</span>
+</span>{
+    zend_file_handle file_handle;
+    zval tmp;
+    zend_op_array *retval;
+    zend_string *opened_path = <span class="hljs-literal">NULL</span>;
+
+    <span class="hljs-keyword">if</span> (Z_TYPE_P(filename) != IS_STRING) {
+        tmp = *filename;
+        zval_copy_ctor(&amp;tmp);
+        convert_to_string(&amp;tmp);
+        filename = &amp;tmp;
+    }
+    file_handle.filename = Z_STRVAL_P(filename);
+    file_handle.free_filename = <span class="hljs-number">0</span>;
+    file_handle.type = ZEND_HANDLE_FILENAME;
+    file_handle.opened_path = <span class="hljs-literal">NULL</span>;
+    file_handle.handle.fp = <span class="hljs-literal">NULL</span>;
+
+    <span class="hljs-comment">//&#x5C06;include&#x6587;&#x4EF6;&#x7684;PHP&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x6210;opcodes</span>
+    retval = zend_compile_file(&amp;file_handle, type);
+    <span class="hljs-keyword">if</span> (retval &amp;&amp; file_handle.handle.stream.handle) {
+        <span class="hljs-keyword">if</span> (!file_handle.opened_path) {
+            file_handle.opened_path = opened_path = zend_string_copy(Z_STR_P(filename));
+        }
+
+        <span class="hljs-comment">// &#x5C06;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x5230;EG(included_files)&#x54C8;&#x5E0C;&#x8868;&#x4E2D;&#xFF0C;&#x5E76;&#x5F00;&#x59CB;&#x7F16;&#x8BD1;</span>
+        zend_hash_add_empty_element(&amp;EG(included_files), file_handle.opened_path);
+
+        <span class="hljs-keyword">if</span> (opened_path) {
+            zend_string_release(opened_path);
+        }
+    }
+    zend_destroy_file_handle(&amp;file_handle);
+
+    <span class="hljs-keyword">if</span> (filename==&amp;tmp) {
+        zval_dtor(&amp;tmp);
+    }
+    <span class="hljs-keyword">return</span> retval;
+}
+</code></pre>
+<p><code>zend_compile_file</code>&#x662F;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x7684;&#x51FD;&#x6570;&#x6307;&#x9488;&#xFF0C;&#x5B83;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x6267;&#x884C;PHP&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x89E3;&#x6790;&#x5B8C;&#x7684;&#x8F6C;&#x6210;&#x7684;zend_op_array&#x3002;&#x5728;PHP&#x5185;&#x6838;&#x542F;&#x52A8;&#x65F6;(zend_startup)&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x6307;&#x9488;&#x5C06;&#x4F1A;&#x6307;&#x5411;compile_file&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-c">zend_compile_file = compile_file;
+zend_execute_ex = execute_ex;
+zend_execute_internal = <span class="hljs-literal">NULL</span>;
+</code></pre>
+<pre><code class="lang-c"><span class="hljs-function">ZEND_API zend_op_array *<span class="hljs-title">compile_file</span><span class="hljs-params">(zend_file_handle *file_handle, <span class="hljs-keyword">int</span> type)</span>
+</span>{
+    zend_lex_state original_lex_state;
+    zend_op_array *op_array = <span class="hljs-literal">NULL</span>;
+    zend_save_lexical_state(&amp;original_lex_state);
+
+    <span class="hljs-keyword">if</span> (open_file_for_scanning(file_handle)==FAILURE) {
+        <span class="hljs-keyword">if</span> (type==ZEND_REQUIRE) {
+            zend_message_dispatcher(ZMSG_FAILED_REQUIRE_FOPEN, file_handle-&gt;filename);
+            zend_bailout();
+        } <span class="hljs-keyword">else</span> {
+            zend_message_dispatcher(ZMSG_FAILED_INCLUDE_FOPEN, file_handle-&gt;filename);
+        }
+    } <span class="hljs-keyword">else</span> {
+        op_array = zend_compile(ZEND_USER_FUNCTION);
+    }
+
+    zend_restore_lexical_state(&amp;original_lex_state);
+    <span class="hljs-keyword">return</span> op_array;
+}
+</code></pre>
+<h3 id="&#x62A5;&#x9519;">&#x62A5;&#x9519;</h3>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5982;&#x679C;&#x6587;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5BF9;require&#x548C;include &#x629B;&#x51FA;&#x7684;&#x5F02;&#x5E38;&#x7C7B;&#x578B;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-c">zend_message_dispatcher(ZMSG_FAILED_REQUIRE_FOPEN, ...);
+zend_message_dispatcher(ZMSG_FAILED_INCLUDE_FOPEN, ...);
+
+BEGIN_EXTERN_C()
+<span class="hljs-function">ZEND_API <span class="hljs-keyword">void</span> <span class="hljs-title">zend_message_dispatcher</span><span class="hljs-params">(zend_long message, <span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *data)</span> <span class="hljs-comment">/* {{{ */</span>
+</span>{
+    <span class="hljs-keyword">if</span> (zend_message_dispatcher_p) {
+        zend_message_dispatcher_p(message, data);
+    }
+}
+<span class="hljs-comment">/* }}} */</span>
+END_EXTERN_C()
+</code></pre>
+<p>&#x51FD;&#x6570;<code>zend_message_dispatcher_p</code>&#x662F;&#x4E00;&#x4E2A;&#x522B;&#x540D;&#xFF1A;<code>zend_message_dispatcher_p = utility_functions-&gt;message_handler;</code></p>
+<p>&#x5728; <code>main.c</code> &#x4E2D; <code>php_module_startup()</code> &#x51FD;&#x6570;&#x4E2D;&#x6709;&#x8FD9;&#x6837;&#x4E00;&#x6761;&#x8BED;&#x53E5;&#x8BF4;&#x660E;&#x6700;&#x7EC8;&#x7684; message handler &#x51FD;&#x6570;&#x662F; <code>php_message_handler_for_zend</code>&#xFF1A;<code>zuf.message_handler = php_message_handler_for_zend;</code></p>
+<pre><code class="lang-c"><span class="hljs-comment">/* {{{ php_message_handler_for_zend
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> ZEND_COLD <span class="hljs-keyword">void</span> <span class="hljs-title">php_message_handler_for_zend</span><span class="hljs-params">(zend_long message, <span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *data)</span>
+</span>{
+    <span class="hljs-keyword">switch</span> (message) {
+        <span class="hljs-keyword">case</span> ZMSG_FAILED_INCLUDE_FOPEN:
+            php_error_docref(<span class="hljs-string">&quot;function.include&quot;</span>, E_WARNING, <span class="hljs-string">&quot;Failed opening &apos;%s&apos; for inclusion (include_path=&apos;%s&apos;)&quot;</span>, php_strip_url_passwd((<span class="hljs-keyword">char</span> *) data), STR_PRINT(PG(include_path)));
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> ZMSG_FAILED_REQUIRE_FOPEN:
+            php_error_docref(<span class="hljs-string">&quot;function.require&quot;</span>, E_COMPILE_ERROR, <span class="hljs-string">&quot;Failed opening required &apos;%s&apos; (include_path=&apos;%s&apos;)&quot;</span>, php_strip_url_passwd((<span class="hljs-keyword">char</span> *) data), STR_PRINT(PG(include_path)));
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> ZMSG_FAILED_HIGHLIGHT_FOPEN:
+        <span class="hljs-keyword">case</span> ZMSG_MEMORY_LEAK_DETECTED:
+        <span class="hljs-keyword">case</span> ZMSG_MEMORY_LEAK_REPEATED:
+        <span class="hljs-keyword">case</span> ZMSG_MEMORY_LEAKS_GRAND_TOTAL:
+        <span class="hljs-keyword">case</span> ZMSG_LOG_SCRIPT_NAME: 
+    }
+}
+<span class="hljs-comment">/* }}} */</span>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;<code>include</code>&#x7684;&#x62A5;&#x9519;&#x7EA7;&#x522B;&#x4E3A;<code>E_WARNING</code>&#xFF0C;<code>require</code>&#x7684;&#x62A5;&#x9519;&#x7EA7;&#x522B;&#x4E3A;<code>E_COMPILE_ERROR</code>&#x3002;</p>
+<h3 id="&#x53D8;&#x91CF;&#x5904;&#x7406;">&#x53D8;&#x91CF;&#x5904;&#x7406;</h3>
+<p>&#x5982;&#x679C;include&#x6587;&#x4EF6;&#x4E2D;&#x53EA;&#x5B9A;&#x4E49;&#x4E86;&#x51FD;&#x6570;&#x3001;&#x7C7B;&#xFF0C;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5219;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x5B9E;&#x9645;&#x76F4;&#x63A5;&#x6267;&#x884C;return&#xFF0C;&#x53EA;&#x662F;&#x5728;&#x7F16;&#x8BD1;&#x9636;&#x6BB5;&#x5C06;&#x51FD;&#x6570;&#x3001;&#x7C7B;&#x6CE8;&#x518C;&#x5230;EG(function_table)&#x3001;EG(class_table)&#x4E2D;&#x4E86;&#xFF0C;&#x5C5E;&#x4E8E;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5728;include&#x6587;&#x4EF6;&#x4E2D;&#x6709;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5B9A;&#x4E49;&#x5904;&#x7406;&#x5C31;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x4E86;&#xFF0C;&#x6BD4;&#x5982;&#x4E0A;&#x9762;&#x90A3;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#x90FD;&#x5B9A;&#x4E49;&#x4E86;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#x662F;&#x5982;&#x4F55;&#x88AB;&#x7EE7;&#x627F;&#x3001;&#x5408;&#x5E76;&#x7684;&#x5462;&#xFF1F;</p>
+<p>&#x4E0A;&#x9762;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x64CD;&#x4F5C;&#xFF1A;<code>i_init_code_execute_data()</code>&#xFF0C;&#x5173;&#x4E8E;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5728;&#x524D;&#x9762;&#x4ECB;&#x7ECD;zend_execute()&#x65F6;&#x66FE;&#x63D0;&#x8FC7;&#xFF0C;&#x8FD9;&#x91CC;&#x9762;&#x9664;&#x4E86;&#x4E00;&#x4E9B;&#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x8BBE;&#x7F6E;&#x8FD8;&#x4F1A;&#x628A;&#x5F53;&#x524D;<code>zend_op_array</code>&#x4E0B;&#x7684;&#x53D8;&#x91CF;&#x79FB;&#x5230;EG(symbol_table)&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7B26;&#x53F7;&#x8868;&#x4E2D;&#x53BB;&#xFF0C;&#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#x76F8;&#x5BF9;&#x81EA;&#x5DF1;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x4F46;&#x5B83;&#x4EEC;&#x5B9A;&#x4E49;&#x5728;&#x51FD;&#x6570;&#x4E4B;&#x5916;&#xFF0C;&#x5B9E;&#x9645;&#x4E5F;&#x662F;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x51FD;&#x6570;&#x4E2D;&#x901A;&#x8FC7;global&#x8BBF;&#x95EE;&#xFF0C;&#x5728;&#x6267;&#x884C;&#x524D;&#x4F1A;&#x628A;&#x6240;&#x6709;&#x5728;php&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;(zend_op_array-&gt;vars&#x6570;&#x7EC4;)&#x63D2;&#x5165;EG(symbol_table)&#xFF0C;value&#x6307;&#x5411;zend_execute_data&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;zval&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="../images/php/include-3.png" alt="include-3"></p>
+<p>&#x800C;include&#x65F6;&#x4E5F;&#x4F1A;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x6B65;&#x9AA4;&#xFF0C;&#x5982;&#x679C;&#x53D1;&#x73B0;var&#x5DF2;&#x7ECF;&#x5728;EG(symbol_table)&#x5B58;&#x5728;&#x4E86;&#xFF0C;&#x5219;&#x4F1A;&#x628A;value&#x91CD;&#x65B0;&#x6307;&#x5411;&#x65B0;&#x7684;zval&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x88AB;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x7684;<code>zend_execute_data</code>&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x540C;&#x65F6;&#x4F1A;&#x628A;&#x539F;zval&#x7684;value&quot;&#x62F7;&#x8D1D;&quot;&#x7ED9;&#x65B0;zval&#x7684;value&#xFF0C;&#x6982;&#x62EC;&#x4E00;&#x4E0B;&#x5C31;&#x662F;&#x88AB;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#x4F1A;&#x7EE7;&#x627F;&#x3001;&#x8986;&#x76D6;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x88AB;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x4E2D;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x539F;&#x56E0;&#x3002;&#x88AB;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x5728;<code>zend_attach_symbol_table()</code>&#x5B8C;&#x6210;&#x4EE5;&#x540E;EG(symbole_table)&#x4E0E;zend_execute_data&#x7684;&#x5173;&#x7CFB;&#xFF1A;</p>
+<p><img src="../images/php/include-4.png" alt="include-4"></p>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x8FD9;&#x91CC;include&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;var_2&#x5B9E;&#x9645;&#x662F;&#x66FF;&#x6362;&#x4E86;&#x539F;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x53EA;&#x6709;&#x4E00;&#x4E2A;var_2&#xFF0C;&#x6240;&#x4EE5;&#x6B64;&#x5904;zend_array&#x7684;&#x5F15;&#x7528;&#x662F;1&#x800C;&#x4E0D;&#x662F;2</p>
+</blockquote>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x662F;&#x88AB;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x6267;&#x884C;&#x5230;<code>$var_2 = array()</code>&#x65F6;&#xFF0C;&#x5C06;&#x539F;<code>array(1,2,3)</code>&#x5F15;&#x7528;&#x51CF;1&#x53D8;&#x4E3A;0&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C06;&#x5176;&#x91CA;&#x653E;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x65B0;&#x7684;value&#xFF1A;<code>array()</code>&#x8D4B;&#x7ED9;<code>$var_2</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x666E;&#x901A;&#x53D8;&#x91CF;&#x7684;&#x8D4B;&#x503C;&#x8FC7;&#x7A0B;&#xFF0C;&#x6CE8;&#x610F;&#x6B64;&#x65F6;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x4E2D;&#x7684;<code>$var_2</code>&#x4ECD;&#x7136;&#x6307;&#x5411;&#x88AB;&#x91CA;&#x653E;&#x6389;&#x7684;value&#xFF0C;&#x6B64;&#x65F6;&#x7684;&#x5185;&#x5B58;&#x5173;&#x7CFB;&#xFF1A;</p>
+<p><img src="../images/php/include-5.png" alt="include-5"></p>
+<p>&#x770B;&#x5230;&#x8FD9;&#x91CC;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x7591;&#x95EE;&#xFF1A;<code>$var_2</code>&#x65E2;&#x7136;&#x88AB;&#x91CD;&#x65B0;&#x4FEE;&#x6539;&#x4E3A;&#x65B0;&#x7684;&#x4E00;&#x4E2A;&#x503C;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x4E3A;&#x4EC0;&#x4E48;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x4E2D;&#x7684;<code>$var_2</code>&#x4ECD;&#x7136;&#x6307;&#x5411;&#x91CA;&#x653E;&#x6389;&#x7684;value&#x5462;&#xFF1F;include&#x6267;&#x884C;&#x5B8C;&#x6210;&#x56DE;&#x5230;&#x539F;&#x6765;&#x7684;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x4E2D;&#x540E;&#x4E3A;&#x4F55;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x5230;&#x65B0;&#x7684;<code>$var_2</code>&#x503C;&#x4EE5;&#x53CA;&#x65B0;&#x5B9A;&#x4E49;&#x7684;<code>var_3</code>&#x5462;&#xFF1F;&#x7B54;&#x6848;&#x5728;&#x88AB;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x6267;&#x884C;&#x5B8C;&#x6BD5;return&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x3002;</p>
+<p>&#x88AB;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x6267;&#x884C;&#x5B8C;&#x4EE5;&#x540E;&#x6700;&#x540E;&#x6267;&#x884C;return&#x8FD4;&#x56DE;&#x8C03;&#x7528;&#x6587;&#x4EF6;include&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;return&#x65F6;&#x4F1A;&#x628A;<strong><em>&#x88AB;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x4E2D;&#x7684;</em></strong>&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4ECE;zend_execute_data&#x4E2D;&#x79FB;&#x5230;EG(symbol_table)&#x4E2D;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x79FB;&#x52A8;&#x662F;&#x628A;value&#x503C;&#x66F4;&#x65B0;&#x5230;EG(symbol_table)&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x50CF;&#x539F;&#x6765;&#x90A3;&#x6837;&#x95F4;&#x63A5;&#x7684;&#x6307;&#x5411;value&#xFF0C;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x5728;<code>zend_detach_symbol_table()</code>&#x4E2D;&#x5B8C;&#x6210;&#xFF0C;&#x5177;&#x4F53;&#x7684;return&#x5904;&#x7406;&#xFF1A;</p>
+<pre><code class="lang-c"><span class="hljs-function"><span class="hljs-keyword">static</span> ZEND_OPCODE_HANDLER_RET ZEND_FASTCALL <span class="hljs-title">zend_leave_helper_SPEC</span><span class="hljs-params">(ZEND_OPCODE_HANDLER_ARGS)</span>
+</span>{
+    zend_execute_data *old_execute_data;
+    <span class="hljs-keyword">uint32_t</span> call_info = EX_CALL_INFO();
+
+    <span class="hljs-keyword">if</span> (EXPECTED((call_info &amp; (ZEND_CALL_CODE|ZEND_CALL_TOP|ZEND_CALL_HAS_SYMBOL_TABLE|ZEND_CALL_FREE_EXTRA_ARGS|ZEND_CALL_ALLOCATED)) == <span class="hljs-number">0</span>)) {
+        <span class="hljs-comment">//...</span>
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (EXPECTED((call_info &amp; (ZEND_CALL_CODE|ZEND_CALL_TOP)) == <span class="hljs-number">0</span>)) {
+        <span class="hljs-comment">//...</span>
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (EXPECTED((call_info &amp; ZEND_CALL_TOP) == <span class="hljs-number">0</span>)) {
+        <span class="hljs-comment">//&#x5C06;include&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#x79FB;&#x5230;EG(symbol_table)</span>
+        zend_detach_symbol_table(execute_data);
+        <span class="hljs-comment">//&#x91CA;&#x653E;zend_op_array</span>
+        destroy_op_array(&amp;EX(func)-&gt;op_array);
+        efree_size(EX(func), <span class="hljs-keyword">sizeof</span>(zend_op_array));
+        old_execute_data = execute_data;
+        <span class="hljs-comment">//&#x5207;&#x56DE;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x7684;zend_execute_data</span>
+        execute_data = EG(current_execute_data) = EX(prev_execute_data);
+        <span class="hljs-comment">//&#x91CA;&#x653E;include&#x6587;&#x4EF6;&#x7684;zend_execute_data</span>
+        zend_vm_stack_free_call_frame_ex(call_info, old_execute_data);
+        <span class="hljs-comment">//&#x91CD;&#x65B0;attach</span>
+        zend_attach_symbol_table(execute_data);
+        <span class="hljs-keyword">if</span> (UNEXPECTED(EG(exception) != <span class="hljs-literal">NULL</span>)) {
+            zend_rethrow_exception(execute_data);
+            HANDLE_EXCEPTION_LEAVE();
+        }
+
+        LOAD_NEXT_OPLINE();
+        ZEND_VM_LEAVE();
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">//...</span>
+    }
+}
+</code></pre>
+<pre><code class="lang-c"><span class="hljs-function">ZEND_API <span class="hljs-keyword">void</span> <span class="hljs-title">zend_detach_symbol_table</span><span class="hljs-params">(zend_execute_data *execute_data)</span> <span class="hljs-comment">/* {{{ */</span>
+</span>{
+    zend_op_array *op_array = &amp;execute_data-&gt;func-&gt;op_array;
+    HashTable *ht = execute_data-&gt;symbol_table;
+
+    <span class="hljs-comment">/* copy real values from CV slots into symbol table */</span>
+    <span class="hljs-keyword">if</span> (EXPECTED(op_array-&gt;last_var)) {
+        zend_string **str = op_array-&gt;vars;
+        zend_string **end = str + op_array-&gt;last_var;
+        zval *var = EX_VAR_NUM(<span class="hljs-number">0</span>);
+
+        <span class="hljs-keyword">do</span> {
+            <span class="hljs-keyword">if</span> (Z_TYPE_P(var) == IS_UNDEF) {
+                zend_hash_del(ht, *str);
+            } <span class="hljs-keyword">else</span> {
+                zend_hash_update(ht, *str, var);
+                ZVAL_UNDEF(var);
+            }
+            str++;
+            var++;
+        } <span class="hljs-keyword">while</span> (str != end);
+    }
+}
+<span class="hljs-comment">/* }}} */</span>
+</code></pre>
+<p>&#x5B8C;&#x6210;&#x4EE5;&#x540E;EG(symbol_table)&#xFF1A;</p>
+<p><img src="../images/php/include-6.png" alt="include-6"></p>
+<p>&#x63A5;&#x7740;&#x662F;&#x8FD8;&#x539F;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x7684;<code>zend_execute_data</code>&#xFF0C;&#x5207;&#x56DE;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x7684;include&#x4F4D;&#x7F6E;&#xFF0C;&#x5728;&#x5C06;&#x6267;&#x884C;&#x5668;&#x5207;&#x56DE;&#x4E4B;&#x524D;&#x518D;&#x6B21;&#x6267;&#x884C;&#x4E86;<code>zend_attach_symbol_table()</code>&#xFF0C;&#x8FD9;&#x65F6;&#x5C31;&#x4F1A;&#x5C06;&#x539F;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x7684;&#x53D8;&#x91CF;&#x91CD;&#x65B0;&#x63D2;&#x5165;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7B26;&#x53F7;&#x8868;&#xFF0C;&#x63D2;&#x5165;<code>$var_2</code>&#x3001;<code>$var_3</code>&#x65F6;&#x53D1;&#x73B0;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x4E86;&#xFF0C;&#x5219;&#x5C06;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x533A;&#x7684;<code>$var_2</code>&#x3001;<code>$var_3</code>&#x7684;value&#x4FEE;&#x6539;&#x4E3A;&#x8FD9;&#x4E2A;&#x503C;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;<code>$var_2</code>&#x88AB;include&#x6587;&#x4EF6;&#x66F4;&#x65B0;&#x540E;&#x8986;&#x76D6;&#x539F;value&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x540C;&#x65F6;<code>$var_3</code>&#x4E5F;&#x56E0;&#x4E3A;&#x5728;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x4E2D;&#x51FA;&#x73B0;&#x4E86;&#x6240;&#x4EE5;&#x503C;&#x88AB;&#x4FEE;&#x6539;&#x4E3A;include&#x4E2D;&#x8BBE;&#x5B9A;&#x7684;&#x503C;&#xFF0C;&#x6B64;&#x65F6;&#x7684;&#x5185;&#x5B58;&#x5173;&#x7CFB;&#xFF1A;</p>
+<p><img src="../images/php/include-7.png" alt="include-7"></p>
+<p>&#x53C2;&#x8003;&#xFF1A;
+<a href="https://www.kancloud.cn/nickbai/php7/363301" target="_blank">https://www.kancloud.cn/nickbai/php7/363301</a></p>
+<p><a href="https://blog.csdn.net/clh604/article/details/41827061" target="_blank">https://blog.csdn.net/clh604/article/details/41827061</a></p>
+<p><a href="http://www.laruence.com/2010/05/04/1450.html" target="_blank">http://www.laruence.com/2010/05/04/1450.html</a></p>
+<p>&#x672A;&#x53C2;&#x8003;&#xFF1A;</p>
+<p><a href="http://www.54chen.com/php-tech/php-require-include.html" target="_blank">http://www.54chen.com/php-tech/php-require-include.html</a></p>
+<p><a href="https://blog.csdn.net/zm_bingxindan/article/details/45654565" target="_blank">https://blog.csdn.net/zm_bingxindan/article/details/45654565</a> </p>
+<footer class="page-footer"><span class="copyright">powered by Gitbook</span><span class="footer-modification">&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2021-05-27 10:52:40
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="array.html" class="navigation navigation-prev " aria-label="Previous page: 数组">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="pass-value.html" class="navigation navigation-next " aria-label="Next page: 传值/传引用">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"require/include","level":"1.2.4","depth":2,"next":{"title":"传值/传引用","level":"1.2.5","depth":2,"path":"php/pass-value.md","ref":"php/pass-value.md","articles":[]},"previous":{"title":"数组","level":"1.2.3","depth":2,"path":"php/array.md","ref":"php/array.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","toggle-chapters","back-to-top-button","tbfed-pagefooter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/ruesin/php-tree"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","author":"ruesin","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP技能树","language":"zh-hans","links":{"sidebar":{"GitHub":"https://github.com/ruesin"}},"gitbook":"*","description":"点亮PHPer的技能树"},"file":{"path":"php/include.md","mtime":"2021-05-27T02:52:40.773Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-27T02:53:22.563Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
